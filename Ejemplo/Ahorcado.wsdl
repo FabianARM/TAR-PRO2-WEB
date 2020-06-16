@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Descripción WSDL de la clase Ahorcado. -->
+
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			 xmlns:tns="urn:ECCI_Ahorcado"
+			 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			 xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"
+			 name="ECCI_Ahorcado"
+			 targetNamespace="urn:ECCI_Ahorcado">
+
+	<!-- Tipos complejos -->
+
+	<types>
+		<xsd:schema targetNamespace="urn:ECCI_Ahorcado"/>
+	</types>
+
+	<!-- Mensajes para comunicarse con la clase Ahorcado. -->
+
+	<message name="verificarLetraIn">
+		<part name="letra" type="xsd:string"/>
+	</message>
+
+	<message name="verificarLetraOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="getIntentosRestantesIn"/>
+
+	<message name="getIntentosRestantesOut">
+		<part name="return" type="xsd:int"/>
+	</message>
+
+	<message name="verificarSiGanoIn"/>
+
+	<message name="verificarSiGanoOut">
+		<part name="return" type="xsd:int"/>
+	</message>
+
+	<message name="getPalabraOcultaIn"/>
+
+	<message name="getPalabraOcultaOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="getPalabraIn"/>
+
+	<message name="getPalabraOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="guardarNombreIn">
+		<part name="nombre" type="xsd:string"/>
+	</message>
+
+	<message name="guardarNombreOut" />
+
+	<message name="getNombreIn"/>
+
+	<message name="getNombreOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="guardarTiempoIn">
+		<part name="nombre" type="xsd:string"/>
+		<part name="tiempo" type="xsd:string"/> 
+	</message>
+
+	<message name="guardarTiempoOut" />
+
+	<message name="mayorTiempoIn"/>
+
+	<message name="mayorTiempoOut">
+		<part name="return" type="xsd:int"/>
+	</message>
+
+	<message name="getTodoIn"/>
+
+	<message name="getTodoOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="resetIn"/>
+
+	<message name="resetOut" />
+
+	<!-- Puerto para comunicar con la clase Ahorcado, "ECCI_Ahorcado" -->
+
+	<portType name="ECCI_AhorcadoPort">
+		<operation name="verificarLetra">
+			<documentation>Ahorcado::verificarLetra() Verifica si la letra esta en la palabra.</documentation>
+			<input message="tns:verificarLetraIn"/>
+			<output message="tns:verificarLetraOut"/>
+		</operation>
+		<operation name="getIntentosRestantes">
+			<documentation>HolaMundo::getIntentosRestantes() Devuelve los intentos.</documentation>
+			<input message="tns:getIntentosRestantesIn"/>
+			<output message="tns:getIntentosRestantesOut"/>
+		</operation>
+		<operation name="verificarSiGano">
+			<documentation>HolaMundo::verificarSiGano() Devuelve 1 si gano sino 0.</documentation>
+			<input message="tns:verificarSiGanoIn"/>
+			<output message="tns:verificarSiGanoOut"/>
+		</operation>
+		<operation name="getPalabraOculta">
+			<documentation>HolaMundo::getPalabraOculta() Devuelve los '_ '.</documentation>
+			<input message="tns:getPalabraOcultaIn"/>
+			<output message="tns:getPalabraOcultaOut"/>
+		</operation>
+		<operation name="getPalabra">
+			<documentation>HolaMundo::getPalabra() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:getPalabraIn"/>
+			<output message="tns:getPalabraOut"/>
+		</operation>
+		<operation name="guardarNombre">
+			<documentation>HolaMundo::guardarNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:guardarNombreIn"/>
+			<output message="tns:guardarNombreOut"/>
+		</operation>
+		<operation name="getNombre">
+			<documentation>HolaMundo::getNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:getNombreIn"/>
+			<output message="tns:getNombreOut"/>
+		</operation>
+		<operation name="guardarTiempo">
+			<documentation>HolaMundo::getNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:guardarTiempoIn"/>
+			<output message="tns:guardarTiempoOut"/>
+		</operation>
+		<operation name="mayorTiempo">
+			<documentation>HolaMundo::getNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:mayorTiempoIn"/>
+			<output message="tns:mayorTiempoOut"/>
+		</operation>
+		<operation name="getTodo">
+			<documentation>HolaMundo::getNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:getNombreIn"/>
+			<output message="tns:getNombreOut"/>
+		</operation>
+		<operation name="reset">
+			<documentation>HolaMundo::getNombre() Devuelve la palabra seleccionada.</documentation>
+			<input message="tns:resetIn"/>
+			<output message="tns:resetOut"/>
+		</operation>
+	</portType>
+
+	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
+
+	<binding name="ECCI_AhorcadoBinding" type="tns:ECCI_AhorcadoPort">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="verificarLetra">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#verificarLetra"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+		
+		<operation name="getIntentosRestantes">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#getIntentosRestantes"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+		
+		<operation name="verificarSiGano">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#verificarSiGano"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="getPalabraOculta">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#getPalabraOculta"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="getPalabra">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#getPalabra"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="guardarNombre">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#guardarNombre"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="getNombre">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#getNombre"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="guardarTiempo">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#guardarTiempo"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="mayorTiempo">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#mayorTiempo"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="getTodo">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#getTodo"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+		<operation name="reset">
+			<soap:operation soapAction="urn:ECCI_Ahorcado#Ahorcado#reset"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:ECCI_Ahorcado"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<!-- Punto de comunicación con la clase Ahorcado -->
+
+	<service name="ECCI_AhorcadoService">
+		<port name="ECCI_AhorcadoPort" binding="tns:ECCI_AhorcadoBinding">
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb50946/prueba/"/>
+		</port>
+	</service>
+</definitions>
