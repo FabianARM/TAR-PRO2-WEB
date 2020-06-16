@@ -131,7 +131,8 @@ class JuegoTikTakToe{
     
     if($this->revisarGanador())
     {
-      // Ganador, verificar si hay que guardarlo en los puntajes mas altos
+      // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
+			// OJO: Se tiene que llamar cuando el jugador gane, no el caso de la maquina
       $this->verificarRecord();
     }
     
@@ -167,8 +168,9 @@ class JuegoTikTakToe{
 			}				
 		}
 		
-		// Si no habia elementos en la lista o si el tiempo actual era el mayor de todos
-		if($insertado == false)
+		// Si hay menos de 10 elementos y no se inserto nada. Caso en que tiempoActual sea mayor que los de la lista.
+		// Si hay mas de 10 elementos, ni siquiera entro al record.
+		if(sizeof($listaRecords) < 10 && $insertado == false)
 		{
 			array_push($listaRecords, new RecordModelo($this->idUsuario, $this->tiempoActualSegundos));
 		}
@@ -219,4 +221,4 @@ else{
 //$juego->immprimirTablero();
 
 
-?> 
+?>
