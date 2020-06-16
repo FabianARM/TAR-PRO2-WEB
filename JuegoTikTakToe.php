@@ -3,17 +3,14 @@ class JuegoTikTakToe{
   
   public $puntosParaGanar = 3;
   public $tablero = array(); 
-  public $modoDeJuego; //Un jugador o multijugador
   public $tamanoTablero = 3; 
   
-  function __construct($modoDeJuego){
-    print("Si estoy ejecutandome ATTE: Constructor\n");
+  function __construct()
+  {
     //Inicializamos el tablero, que es de tamaño 9*9 
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
       $this->tablero[$indice] = "";
     }
-    //Y seleccionamos el modo de juego
-   $this->$modoDeJuego = $modoDeJuego;  
   }
   
   function getTablero(){
@@ -36,7 +33,6 @@ class JuegoTikTakToe{
       while($coordenadaX < 2){
         if($indice == 0){
           if($this->obtenerValorDePosicion($coordenadaX,$coordenadaY) != "" && $this->obtenerValorDePosicion($coordenadaX,$coordenadaY) == $this->obtenerValorDePosicion($coordenadaX + 1,$coordenadaY + 1)) {
-            print("\n".$this->obtenerValorDePosicion($coordenadaX,$coordenadaY)." - ".$this->obtenerValorDePosicion($coordenadaX + 1,$coordenadaY + 1)."\n");
             $contador++; 
             if($contador == $this->puntosParaGanar){
               return true; 
@@ -115,47 +111,44 @@ class JuegoTikTakToe{
     $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
   }
   
-  function turno($coordenadaX, $coordenadaY, $caracter){
-    if($caracter == "X"){
-      $this->marcarXEnTablero($coordenadaX, $coordenadaY); 
+  function turno($coordenadaX, $coordenadaY, $caracter)
+  {
+    if($caracter == "X")
+    {
+      $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);
     }
-    else{
-      $this->marcarYEnTablero($coordenadaX, $coordenadaY);
+    else
+    {
+      $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
     }
+    
+    if($this->revisarGanador())
+    {
+      // Ganador, verificar si hay que guardarlo en los puntajes mas altos
+      $this->verificarRecord();
+    }
+    
+    
     return $this->revisarGanador(); 
      
   }
-  //El caracter es sobre el que se va a armar la matrix, ya se X ó O 
-  function armarMatrizDeDecision($caracter){
-    //Iniciamos la matrix de decision. 
-    $matrixDeDecision = array(); 
-    for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
-      $matrizDeDecision[$indice] = "";
-    }
-    //Se rellena la suma de las columnas
-    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
-      $contadorDeCaracteres = 0; 
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
-        if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
-           $contador++; 
-        }
-        $matrizDeDecision[3 * $this->tamanoTablero + $indice] = $contador; 
-      }
-    }
-
-    //Se rellena la suma de las filas.
-    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
-      $contadorDeCaracteres = 0; 
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
-        if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
-           $contador++; 
-        }
-        $matrizDeDecision[$indice * $this->tamanoTablero + 3] = $contador; 
-      }
-    }
-    return $matrixDeDecision; 
+  
+  function verificarRecord()
+  {
+    // Obtener las posiciones con los tiempos
+    
+    // Iterar sobre la lista de los tiempos
+    
+      // Si mi tiempo es menor a alguno:
+        // Hacer append en el index actual
+        // Si el tamanno de la lista es 10, eliminar el elemento onceavo
+    
+    // Limpio el archivo y guardo la lista
+    
+    print("GUARDAR ARCHIVO\n");
   }
-
+  
+  
   function limpiarTablero(){
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
       $this->tablero[$indice] = "";
@@ -175,28 +168,18 @@ class JuegoTikTakToe{
       print(""."\n");
     }
   }
-
 }
-
-
-
-
-
-
-
 
 //Prueba 
 
-$juego = new JuegoTikTakToe(1); 
+$juego = new JuegoTikTakToe(); 
 
 /*print($juego->turno(0,0,"X"));
-
 print($juego->turno(1,1,"X"));
-
 print($juego->turno(2,2,"X"));
 */
   
-if($juego->turno(0,0,"X") || $juego->turno(1,1,"X") || $juego->turno(2,1,"X") || $juego->turno(0,1,"X"))
+if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
 {
   print("Gano\n");
 }
@@ -204,7 +187,7 @@ else{
   print("No gano\n");
 }
   
-$juego->immprimirTablero();
+//$juego->immprimirTablero();
 
 
 ?> 
