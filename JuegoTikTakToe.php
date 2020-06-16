@@ -1,4 +1,7 @@
 <?php 
+
+require("BaseDatos.php");
+
 class JuegoTikTakToe{
   
   public $puntosParaGanar = 3;
@@ -7,6 +10,7 @@ class JuegoTikTakToe{
   
   function __construct()
   {
+    $this->db = new BaseDatos();
     //Inicializamos el tablero, que es de tamaño 9*9 
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
       $this->tablero[$indice] = "";
@@ -25,7 +29,8 @@ class JuegoTikTakToe{
     return $this->tablero[$coordenadaX * $this->tamanoTablero + $coordenadaY];
   }
   
-  function revisarDiagonales(){  
+  function revisarDiagonales()
+  {  
     $coordenadaX = 0; 
     $coordenadaY = 0;
     $contador = 1;
@@ -135,7 +140,8 @@ class JuegoTikTakToe{
   
   function verificarRecord()
   {
-    // Obtener las posiciones con los tiempos
+    $listaRecords = $this->db->leerRecords();
+    
     
     // Iterar sobre la lista de los tiempos
     
@@ -144,8 +150,6 @@ class JuegoTikTakToe{
         // Si el tamanno de la lista es 10, eliminar el elemento onceavo
     
     // Limpio el archivo y guardo la lista
-    
-    print("GUARDAR ARCHIVO\n");
   }
   
   
