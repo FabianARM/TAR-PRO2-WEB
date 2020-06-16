@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<!-- Descripción WSDL de la clase Hola Mundo. -->
+
+<definitions name="TikTakToe"
+             targetNamespace="urn:TikTakToe"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="urn:TikTakToe"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+  
+  
+  <!-- Tipos complejos -->
+  <!--No se necesitan tipos commplejos de momento.-->
+  
+  
+  <!-- Mensajes para comunicarse con la clase HolaMundo. -->
+  
+  <message name="">
+    <part name="" type="xsd:" />
+  </message>
+  
+  <message name="coordenadaXRequest">
+    <part name="coordenadaX" type="xsd:int"/>
+  </message>
+  
+  <message name="coordenadaYRequest">
+    <part name="coordenadaY" type="xsd:int"/>
+  </message>
+  
+  <message name="turnoResponse">
+    <part name="return" type="xsd:boolean"/>
+  </message>
+  
+  <message name="tableroRequest"/>
+  
+  <message name="tableroResponse">
+    <part name="tablero" type="xsd:string"/>
+  </message>  
+  
+  <message name="caracterRequest">
+    <part name="caracter" type="xsd:string"/>
+  </message>  
+  
+  
+  <!--Puerto para comunicar con la clase tiktaktoe-->
+   
+	<portType name="TikTakToe">
+		<operation name="turno">
+			<documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
+			<input message="tns:coordenadaXRequest"/>
+      <input message="tns:coordenadaYRequest"/>
+      <input message="tns:caracter">
+			<output message="tns:turnoResponse"/>		
+    </operation>
+    
+		<operation name="getTablero">
+			<documentation>TikTakToe:getTablero Se obtiene el tablero del juego.</documentation>
+			<input message="tns:tableroRequest"/>
+			<output message="tns:tableroResponse"/>
+		</operation>
+
+	</portType>
+  
+	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
+
+	<binding name="TikTakToeBinding" type="tns:TikTakToe">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="turno">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#turno"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="getTablero">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#getTablero"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+	</binding>
+
+	<!-- Punto de comunicación con la clase HolaMundo -->
+
+	<service name="TikTakToeService">
+		<port name="TikTakToePort" binding="tns:ECCI_HolaMundoBinding">
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/HolaMundoServiceRPCEncoded/"/>
+		</port>
+	</service>
+</definitions>
