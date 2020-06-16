@@ -7,6 +7,7 @@ class JuegoTikTakToe{
   public $puntosParaGanar = 3;
   public $tablero = array(); 
   public $tamanoTablero = 3; 
+  public $tiempoActualSegundos = 20;  // Se tiene que llevar un conteo, de momento, quemado para pruebas
   
   function __construct()
   {
@@ -143,11 +144,32 @@ class JuegoTikTakToe{
     $listaRecords = $this->db->leerRecords();
     
     
-    // Iterar sobre la lista de los tiempos
     
-      // Si mi tiempo es menor a alguno:
+    // Iterar sobre la lista de los tiempos
+    for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
+    {
+      $record = $listaRecords[$posicion];
+        // Si mi tiempo es menor a alguno
+      if($record->tiempo > $this->tiempoActualSegundos)
+      {
         // Hacer append en el index actual
+        array_splice( $listaRecords, $posicion, 0, array(new RecordModelo("MiIdentificador", $this->tiempoActualSegundos)) );
+        
         // Si el tamanno de la lista es 10, eliminar el elemento onceavo
+        if(sizeof($listaRecords) > 10)
+        {
+          unset($listaRecords[sizeof($listaRecords) - 1]);
+        }
+        
+        break;
+      }
+    }
+    
+    for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
+    {
+      $record = $listaRecords[$posicion];
+      print($record->nombre);
+    }
     
     // Limpio el archivo y guardo la lista
   }
@@ -185,10 +207,10 @@ print($juego->turno(2,2,"X"));
   
 if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
 {
-  print("Gano\n");
+ // print("Gano\n");
 }
 else{
-  print("No gano\n");
+ // print("No gano\n");
 }
   
 //$juego->immprimirTablero();
