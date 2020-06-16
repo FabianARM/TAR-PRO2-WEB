@@ -1,9 +1,7 @@
 <?php
 
-/**
- * Modelo Direccion.
- *
- */
+require("RecordModelo.php");
+
 class BaseDatos
 {
 	function leerRecords()
@@ -18,7 +16,7 @@ class BaseDatos
 		} // while
 		fclose($archivo);
     
-    print("JAJAJAJAJA");
+    print("leerRecords");
     
     return $listaTiempos;
 	}
