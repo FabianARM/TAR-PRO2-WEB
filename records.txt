@@ -1,0 +1,3 @@
+JUGADOR:10
+maria:20
+pedro:40

@@ -16,8 +16,19 @@ class BaseDatos
 		} // while
 		fclose($archivo);
     
-    print("leerRecords");
-    
     return $listaTiempos;
 	}
+  
+  function guardarRecords(array $listaRecords)
+  {
+    $archivo = fopen('records.txt', 'w');
+    foreach($listaRecords as $record)
+    {
+      $linea = trim(preg_replace('/\s\s+/', '', $record->serialice()));
+      
+      fwrite($archivo, $linea."\n");
+    }
+    
+    fclose($archivo);
+  }
 }

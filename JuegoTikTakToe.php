@@ -7,7 +7,8 @@ class JuegoTikTakToe{
   public $puntosParaGanar = 3;
   public $tablero = array(); 
   public $tamanoTablero = 3; 
-  public $tiempoActualSegundos = 20;  // Se tiene que llevar un conteo, de momento, quemado para pruebas
+  public $tiempoActualSegundos = 10;  // Se tiene que llevar un conteo, de momento, quemado para pruebas
+	public $idUsuario = "JUGADOR";
   
   function __construct()
   {
@@ -142,36 +143,38 @@ class JuegoTikTakToe{
   function verificarRecord()
   {
     $listaRecords = $this->db->leerRecords();
-    
-    
-    
-    // Iterar sobre la lista de los tiempos
-    for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
-    {
-      $record = $listaRecords[$posicion];
-        // Si mi tiempo es menor a alguno
-      if($record->tiempo > $this->tiempoActualSegundos)
-      {
-        // Hacer append en el index actual
-        array_splice( $listaRecords, $posicion, 0, array(new RecordModelo("MiIdentificador", $this->tiempoActualSegundos)) );
-        
-        // Si el tamanno de la lista es 10, eliminar el elemento onceavo
-        if(sizeof($listaRecords) > 10)
-        {
-          unset($listaRecords[sizeof($listaRecords) - 1]);
-        }
-        
-        break;
-      }
-    }
-    
-    for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
-    {
-      $record = $listaRecords[$posicion];
-      print($record->nombre);
-    }
+		$insertado = false;
+
+		// Iterar sobre la lista de los tiempos
+		for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
+		{
+			$record = $listaRecords[$posicion];
+
+				// Si mi tiempo es menor a alguno
+			if($record->tiempo > $this->tiempoActualSegundos)
+			{
+				// Hacer append en el index actual
+				array_splice( $listaRecords, $posicion, 0, array(new RecordModelo($this->idUsuario, $this->tiempoActualSegundos)) );
+
+				// Si el tamanno de la lista es 10, eliminar el elemento onceavo
+				if(sizeof($listaRecords) > 10)
+				{
+					unset($listaRecords[sizeof($listaRecords) - 1]);
+				}
+				
+				$insertado = true;
+				break;
+			}				
+		}
+		
+		// Si no habia elementos en la lista o si el tiempo actual era el mayor de todos
+		if($insertado == false)
+		{
+			array_push($listaRecords, new RecordModelo($this->idUsuario, $this->tiempoActualSegundos));
+		}
     
     // Limpio el archivo y guardo la lista
+		$this->db->guardarRecords($listaRecords);
   }
   
   
