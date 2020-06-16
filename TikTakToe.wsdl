@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
+<!--
+Esta era una primera version de l wsdl. 
+string realizarTurno(idJugador, x, y)(edited)
+bool determinarGanador()
+-->
 
 <!-- Descripción WSDL de la clase Hola Mundo. -->
 

@@ -125,6 +125,37 @@ class JuegoTikTakToe{
     return $this->revisarGanador(); 
      
   }
+  //El caracter es sobre el que se va a armar la matrix, ya se X ó O 
+  function armarMatrizDeDecision($caracter){
+    //Iniciamos la matrix de decision. 
+    $matrixDeDecision = array(); 
+    for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
+      $matrizDeDecision[$indice] = "";
+    }
+    //Se rellena la suma de las columnas
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
+      $contadorDeCaracteres = 0; 
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
+        if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
+           $contador++; 
+        }
+        $matrizDeDecision[3 * $this->tamanoTablero + $indice] = $contador; 
+      }
+    }
+
+    //Se rellena la suma de las filas.
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
+      $contadorDeCaracteres = 0; 
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
+        if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
+           $contador++; 
+        }
+        $matrizDeDecision[$indice * $this->tamanoTablero + 3] = $contador; 
+      }
+    }
+    return $matrixDeDecision; 
+  }
+
   function limpiarTablero(){
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
       $this->tablero[$indice] = "";
@@ -144,7 +175,15 @@ class JuegoTikTakToe{
       print(""."\n");
     }
   }
+
 }
+
+
+
+
+
+
+
 
 //Prueba 
 
