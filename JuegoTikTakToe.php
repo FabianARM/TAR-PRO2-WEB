@@ -178,6 +178,22 @@ class JuegoTikTakToe{
 		$this->db->guardarRecords($listaRecords);
   }
   
+  
+  function obtenerRecords()
+  {
+    $listaRecords = $this->db->leerRecords();
+    $json = array();
+    
+    for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
+    {
+      $record = $listaRecords[$posicion];
+      
+      array_push($json, array(strval($posicion + 1) => array('nombre' => $record->nombre, 'tiempo' => $record->tiempo)) );
+    }
+    
+    return json_encode( $json );
+  }
+  
     
   function armarMatrizDeDecision($caracter){
     //Iniciamos la matrix de decision. 

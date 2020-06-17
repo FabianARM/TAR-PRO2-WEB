@@ -11,6 +11,8 @@ class BaseDatos
 		$archivo = fopen('records.txt', 'r');
 		while($registro = fgets($archivo))
 		{
+      $registro = trim(preg_replace('/\s\s+/', '', $registro));
+      
 			$modelo = explode(':', $registro);
 			$listaTiempos[] = new RecordModelo($modelo[0], $modelo[1]);
 		} // while
