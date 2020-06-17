@@ -138,37 +138,6 @@ class JuegoTikTakToe{
     
     
     return $this->revisarGanador(); 
-     
-  }
-  
-  function armarMatrizDeDecision($caracter){
-    //Iniciamos la matrix de decision. 
-    $matrixDeDecision = array(); 
-    for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
-      $matrizDeDecision[$indice] = "";
-    }
-    //Se rellena la suma de las columnas
-    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
-      $contadorDeCaracteres = 0; 
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
-        if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
-           $contador++; 
-        }
-        $matrizDeDecision[3 * $this->tamanoTablero + $indice] = $contador; 
-      }
-    }
-
-    //Se rellena la suma de las filas.
-    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
-      $contadorDeCaracteres = 0; 
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
-        if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
-           $contador++; 
-        }
-        $matrizDeDecision[$indice * $this->tamanoTablero + 3] = $contador; 
-      }
-    }
-    return $matrixDeDecision; 
   }
 
   function verificarRecord()
@@ -209,7 +178,124 @@ class JuegoTikTakToe{
 		$this->db->guardarRecords($listaRecords);
   }
   
-  
+    
+  function armarMatrizDeDecision($caracter){
+    //Iniciamos la matrix de decision. 
+    $matrixDeDecision = array(); 
+    for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
+      $matrizDeDecision[$indice] = "";
+    }
+    //Se rellena la suma de las columnas
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
+      $contadorDeCaracteres = 0; 
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
+        if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
+           $contador++; 
+        }
+        $matrizDeDecision[3 * $this->tamanoTablero + $indice] = $contador; 
+      }
+    }
+     //Se rellena la suma de las filas.
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
+      $contadorDeCaracteres = 0; 
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
+        if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
+           $contador++; 
+        }
+        $matrizDeDecision[$indice * $this->tamanoTablero + 3] = $contador; 
+      }
+    }
+    $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
+    return $matrixDeDecision; 
+  }
+  function e
+  function jugadaMaquina($matrizDeDesicion)
+  {
+    //Posiciones de interes (3, Y) y (X, 3)
+    //$coordenadaX * $this->tamanoTablero + $coordenadaY
+    //Heuristica #1  // Si en una fila hay un 2 tiene que marcar porque va a perder o va a ganar. 
+    if($matrizDeDecision[3 * $this->tamanoTablero + 0] == 2){
+      //Si esta vacio se puede marcar.
+      if($this->obtenerValorDePosicion(0, 0) == ""){ 
+        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
+      }else{
+        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
+      }
+      return true; 
+    }
+    else{
+      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2){
+        if($this->obtenerValorDePosicion(0, 1) == ""){ 
+          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 1);
+        }else{
+          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 1);
+        }
+        return true; 
+      }
+      else{
+        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2){
+          if($this->obtenerValorDePosicion(0, 2) == ""){ 
+            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
+          }else{
+            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
+          }
+        }
+        return true; 
+      }
+    }
+    //Fin de heuristica #1
+    //Inicio segunda heuristica #2 // Si en una columna hay un dos 
+    if($matrizDeDecision[0 * $this->tamanoTablero + 3] == 2){
+      //Si esta vacio se puede marcar.
+      if($this->obtenerValorDePosicion(0, 0) == ""){ 
+        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
+      }else{
+        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
+      }
+      return true; 
+    }
+    else{
+      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2){
+        if($this->obtenerValorDePosicion(0, 1) == ""){ 
+          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 0);
+        }else{
+          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 2);
+        }
+        return true; 
+      }
+      else{
+        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2){
+          if($this->obtenerValorDePosicion(0, 2) == ""){ 
+            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
+          }else{
+            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
+          }
+        }
+        return true; 
+      }
+    }
+    //Fin de heuristica #2
+    //Inicio de la tercera heuristica #3
+    $posicionX = -1;
+    $posicionY = -1; 
+    for($indice = 0; $indice < 2; $indice++){
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2){
+        if($indice == 0 && $matrixDeDecision[3 * $this->tamanoTablero + $indice2] == 0){ 
+            $posicionY = $indice2; 
+        }else{
+          if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0){
+            $posicionX = $indice2
+          }
+        }
+      }
+    }
+    if($posicionX != -1 && $posicionY != -1){
+      $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], $posicionX, $posicionY);
+    }// Si no cae en ninguna de las heuristicas anteriores que pacha? 
+    //fin de la heuristica
+  }
+
+
   function limpiarTablero(){
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
       $this->tablero[$indice] = "";
