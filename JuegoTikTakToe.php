@@ -99,10 +99,6 @@ class JuegoTikTakToe{
     
   }
   
-  function jugadaMaquina(){
-    //Tiene que retornar las coordadas donde va jugar
-  } 
-  
   function revisarGanador(){
     if($this->revisarDiagonales() || $this->revisarVertical() || $this->revisarHorizontal()){
       return true; 
@@ -191,7 +187,7 @@ class JuegoTikTakToe{
       $resultado = $resultado.$record->nombre.",".$record->tiempo.";";
     }
     
-    return $resultado;
+    echo $resultado;
   }
   
     
@@ -224,35 +220,49 @@ class JuegoTikTakToe{
     $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
     return $matrixDeDecision; 
   }
-  function e
+
   function jugadaMaquina($matrizDeDesicion)
   {
     //Posiciones de interes (3, Y) y (X, 3)
     //$coordenadaX * $this->tamanoTablero + $coordenadaY
     //Heuristica #1  // Si en una fila hay un 2 tiene que marcar porque va a perder o va a ganar. 
-    if($matrizDeDecision[3 * $this->tamanoTablero + 0] == 2){
+    if($matrizDeDecision[3 * $this->tamanoTablero + 0] == 2)
+    {
       //Si esta vacio se puede marcar.
-      if($this->obtenerValorDePosicion(0, 0) == ""){ 
+      if($this->obtenerValorDePosicion(0, 0) == "")
+      { 
         $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
-      }else{
+      }
+      else
+      {
         $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
       }
       return true; 
     }
-    else{
-      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2){
-        if($this->obtenerValorDePosicion(0, 1) == ""){ 
+    else
+    {
+      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2)
+      {
+        if($this->obtenerValorDePosicion(0, 1) == "")
+        { 
           $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 1);
-        }else{
+        }
+        else
+        {
           $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 1);
         }
         return true; 
       }
-      else{
-        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2){
-          if($this->obtenerValorDePosicion(0, 2) == ""){ 
+      else
+      {
+        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2)
+        {
+          if($this->obtenerValorDePosicion(0, 2) == "")
+          { 
             $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
-          }else{
+          }
+          else
+          {
             $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
           }
         }
@@ -261,29 +271,43 @@ class JuegoTikTakToe{
     }
     //Fin de heuristica #1
     //Inicio segunda heuristica #2 // Si en una columna hay un dos 
-    if($matrizDeDecision[0 * $this->tamanoTablero + 3] == 2){
+    if($matrizDeDecision[0 * $this->tamanoTablero + 3] == 2)
+    {
       //Si esta vacio se puede marcar.
-      if($this->obtenerValorDePosicion(0, 0) == ""){ 
+      if($this->obtenerValorDePosicion(0, 0) == "")
+      { 
         $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
-      }else{
+      }
+      else
+      {
         $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
       }
       return true; 
     }
-    else{
-      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2){
-        if($this->obtenerValorDePosicion(0, 1) == ""){ 
+    else
+    {
+      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2)
+      {
+        if($this->obtenerValorDePosicion(0, 1) == "")
+        { 
           $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 0);
-        }else{
+        }
+        else
+        {
           $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 2);
         }
         return true; 
       }
-      else{
-        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2){
-          if($this->obtenerValorDePosicion(0, 2) == ""){ 
+      else
+      {
+        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2)
+        {
+          if($this->obtenerValorDePosicion(0, 2) == "")
+          { 
             $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
-          }else{
+          }
+          else
+          {
             $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
           }
         }
@@ -294,22 +318,30 @@ class JuegoTikTakToe{
     //Inicio de la tercera heuristica #3
     $posicionX = -1;
     $posicionY = -1; 
-    for($indice = 0; $indice < 2; $indice++){
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2){
-        if($indice == 0 && $matrixDeDecision[3 * $this->tamanoTablero + $indice2] == 0){ 
+    for($indice = 0; $indice < 2; $indice++)
+    {
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2)
+      {
+        if($indice == 0 && $matrixDeDecision[3 * $this->tamanoTablero + $indice2] == 0)
+        { 
             $posicionY = $indice2; 
-        }else{
-          if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0){
-            $posicionX = $indice2
+        }
+        else
+        {
+          if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0)
+          {
+            $posicionX = $indice2;
           }
         }
       }
     }
-    if($posicionX != -1 && $posicionY != -1){
+    if($posicionX != -1 && $posicionY != -1)
+    {
       $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], $posicionX, $posicionY);
     }// Si no cae en ninguna de las heuristicas anteriores que pacha? 
     //fin de la heuristica
   }
+  
 
 
   function limpiarTablero(){
@@ -335,12 +367,14 @@ class JuegoTikTakToe{
 
 //Prueba 
 
-$juego = new JuegoTikTakToe(); 
+$juego = new JuegoTikTakToe();
+
+$juego->obtenerRecords();
 
 /*print($juego->turno(0,0,"X"));
 print($juego->turno(1,1,"X"));
 print($juego->turno(2,2,"X"));
-*/
+
   
 if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
 {
@@ -351,6 +385,6 @@ else{
 }
   
 //$juego->immprimirTablero();
-
+*/
 
 ?>
