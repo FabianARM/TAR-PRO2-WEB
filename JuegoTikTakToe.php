@@ -208,9 +208,7 @@ class JuegoTikTakToe{
     $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
     return $matrixDeDecision; 
   }
-  function e
-  function jugadaMaquina($matrizDeDesicion)
-  {
+  function jugadaMaquina($matrizDeDesicion){
     //Posiciones de interes (3, Y) y (X, 3)
     //$coordenadaX * $this->tamanoTablero + $coordenadaY
     //Heuristica #1  // Si en una fila hay un 2 tiene que marcar porque va a perder o va a ganar. 
@@ -284,7 +282,7 @@ class JuegoTikTakToe{
             $posicionY = $indice2; 
         }else{
           if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0){
-            $posicionX = $indice2
+            $posicionX = $indice2;
           }
         }
       }
