@@ -182,16 +182,16 @@ class JuegoTikTakToe{
   function obtenerRecords()
   {
     $listaRecords = $this->db->leerRecords();
-    $json = array();
+    $resultado = "";
     
     for($posicion = 0; $posicion < sizeof($listaRecords); $posicion++)
     {
       $record = $listaRecords[$posicion];
       
-      array_push($json, array(strval($posicion + 1) => array('nombre' => $record->nombre, 'tiempo' => $record->tiempo)) );
+      $resultado = $resultado.$record->nombre.",".$record->tiempo.";";
     }
     
-    return json_encode( $json );
+    return $resultado;
   }
   
     
