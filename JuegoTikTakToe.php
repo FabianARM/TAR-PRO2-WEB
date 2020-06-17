@@ -187,7 +187,7 @@ class JuegoTikTakToe{
       $resultado = $resultado.$record->nombre.",".$record->tiempo.";";
     }
     
-    echo $resultado;
+    return $resultado;
   }
   
     
@@ -368,8 +368,6 @@ class JuegoTikTakToe{
 //Prueba 
 
 $juego = new JuegoTikTakToe();
-
-$juego->obtenerRecords();
 
 /*print($juego->turno(0,0,"X"));
 print($juego->turno(1,1,"X"));
