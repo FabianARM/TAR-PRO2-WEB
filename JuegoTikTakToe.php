@@ -122,7 +122,8 @@ class JuegoTikTakToe{
     }
     else
     {
-      $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
+      $this->jugadaMaquina(); 
+      //$this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
     }
     
     if($this->revisarGanador())
