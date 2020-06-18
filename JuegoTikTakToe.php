@@ -220,13 +220,10 @@ class JuegoTikTakToe{
     $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
     return $matrixDeDecision; 
   }
-<<<<<<< HEAD
-  function jugadaMaquina($matrizDeDesicion){
-=======
 
-  function jugadaMaquina($matrizDeDesicion)
+
+  function revisionHeurisiticas($matrizDeDesicion)
   {
->>>>>>> 7163082f8ed5b9d565f269fb21abaa3c3b3dbe42
     //Posiciones de interes (3, Y) y (X, 3)
     //$coordenadaX * $this->tamanoTablero + $coordenadaY
     //Heuristica #1  // Si en una fila hay un 2 tiene que marcar porque va a perder o va a ganar. 
@@ -319,7 +316,7 @@ class JuegoTikTakToe{
       }
     }
     //Fin de heuristica #2
-    //Inicio de la tercera heuristica #3
+    //Inicio de la tercera heuristica #3 
     $posicionX = -1;
     $posicionY = -1; 
     for($indice = 0; $indice < 2; $indice++)
@@ -329,16 +326,12 @@ class JuegoTikTakToe{
         if($indice == 0 && $matrixDeDecision[3 * $this->tamanoTablero + $indice2] == 0)
         { 
             $posicionY = $indice2; 
-<<<<<<< HEAD
-        }else{
-          if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0){
-=======
         }
         else
         {
           if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0)
           {
->>>>>>> 7163082f8ed5b9d565f269fb21abaa3c3b3dbe42
+
             $posicionX = $indice2;
           }
         }
@@ -347,8 +340,45 @@ class JuegoTikTakToe{
     if($posicionX != -1 && $posicionY != -1)
     {
       $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], $posicionX, $posicionY);
+      return true; 
     }// Si no cae en ninguna de las heuristicas anteriores que pacha? 
     //fin de la heuristica
+    return false; 
+  }
+  function jugadaMaquina()
+  {
+    $matrizDeX = $this->armarMatrizDeDecision("X");
+    $matrizDeO = $this->armarMatrizDeDecision("O");
+    //Revisamos heuristica para opcion de ganar. 
+    $yaJugo = false; 
+    if($this->revisionHeurisiticas($matrizDeO) == false)
+    {
+      if($this->revisionHeurisiticas($matrizDeX))
+      { 
+        if($this->obtenerValorDePosicion(1, 1) == "")
+        {
+          $this->marcarOEnElTablero(1, 1); 
+        }
+        else
+        {
+          for($indice = 0; $indice < $this->tamanoTablero, $indice++)
+          {
+            for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2)
+            {
+              if($this->obtenerValorDePosicion($indice, $indice) == "" && $indice != 1 && $indice2 == 1 && !$yaJugo)
+              {
+                marcarOEnElTablero($indice, $indice2); 
+              }
+            }
+            if($yaJugo)
+            {
+              break; 
+            }
+          }
+        }
+      }   
+    }
+
   }
   
 
