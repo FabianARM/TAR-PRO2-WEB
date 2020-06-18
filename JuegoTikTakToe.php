@@ -120,12 +120,7 @@ class JuegoTikTakToe{
     {
       $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);
     }
-    else
-    {
-      $this->jugadaMaquina(); 
-      //$this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
-    }
-    
+    $this->jugadaMaquina(); 
     if($this->revisarGanador())
     {
       // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
@@ -196,16 +191,16 @@ class JuegoTikTakToe{
     //Iniciamos la matrix de decision. 
     $matrixDeDecision = array(); 
     for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
-      $matrizDeDecision[$indice] = "";
+      $matrixDeDecision[$indice] = "";
     }
     //Se rellena la suma de las columnas
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       $contadorDeCaracteres = 0; 
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
         if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
-           $contador++; 
+           $contadorDeCaracteres++; 
         }
-        $matrizDeDecision[3 * $this->tamanoTablero + $indice] = $contador; 
+        $matrixDeDecision[$indice * $this->tamanoTablero + 3] = $contadorDeCaracteres; 
       }
     }
      //Se rellena la suma de las filas.
@@ -213,176 +208,168 @@ class JuegoTikTakToe{
       $contadorDeCaracteres = 0; 
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
         if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
-           $contador++; 
+           $contadorDeCaracteres++; 
         }
-        $matrizDeDecision[$indice * $this->tamanoTablero + 3] = $contador; 
+        $matrixDeDecision[3 * $this->tamanoTablero + $indice] = $contadorDeCaracteres; 
       }
     }
     $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
     return $matrixDeDecision; 
   }
-
-
+  function revisarHeuristicaFilas($coordenadaY, $matrizDeDesicion)
+  {
+    $coordenadaX = 0; 
+    while($coordenadaX < 3)
+    {
+      if($matrizDeDesicion[3 * $this->tamanoTablero + $coordenadaY] == 2)
+      {
+        if($this->obtenerValorDePosicion($coordenadaX, $coordenadaY) == "")
+        { 
+          $this->marcarOEnElTablero($coordenadaX, $coordenadaY);
+          return true;
+        }
+      }
+      $coordenadaX++;
+    }
+    return false; 
+    /*
+    if($matrizDeDesicion[3 * $this->tamanoTablero + coordena] == 2)
+    {
+      //Si esta vacio se puede marcar.
+      if($this->obtenerValorDePosicion(0, 0) == "")
+      { 
+        $this->marcarOEnElTablero(0, 0);
+      }
+      else
+      {
+        if($this->obtenerValorDePosicion(2, 0) == "")
+        {
+          $this->marcarOEnElTablero(2, 0);
+        }
+      }
+    }
+    */
+  }
+  function revisarHeuristicaColumnas($coordenadaX, $matrizDeDesicion)
+  {
+    $coordenadaY = 0; 
+    while($coordenadaY < 3)
+    {
+      if($matrizDeDesicion[$coordenadaX * $this->tamanoTablero + 3] == 2)
+      {
+        if($this->obtenerValorDePosicion($coordenadaX, $coordenadaY) == "")
+        { 
+          $this->marcarOEnElTablero($coordenadaX, $coordenadaY);
+          return true;
+        }
+      }
+      $coordenadaY++;
+    }
+    return false; 
+  }
+  function revisarHeuristicaDiagonales($matrizDeDesicion)
+  {
+    //Si en el centro del tablero hay una X debe examinar las esquinas
+    if($this->obtenerValorDePosicion(1,1) == "X")
+    {
+      if($this->obtenerValorDePosicion(0,0) == "X")
+      {
+        $this->marcarOEnElTablero(2,2);
+        return true;
+      }
+      if($this->obtenerValorDePosicion(2,2) == "X")
+      {
+        $this->marcarOEnElTablero(0,0);
+        return true;
+      }
+      if($this->obtenerValorDePosicion(0,2) == "X")
+      {
+        $this->marcarOEnElTablero(2,0);
+        return true;
+      }
+      if($this->obtenerValorDePosicion(2,0) == "X")
+      {
+        $this->marcarOEnElTablero(0,2);
+        return true;
+      }
+    }
+    return false;
+  }
   function revisionHeurisiticas($matrizDeDesicion)
   {
     //Posiciones de interes (3, Y) y (X, 3)
     //$coordenadaX * $this->tamanoTablero + $coordenadaY
     //Heuristica #1  // Si en una fila hay un 2 tiene que marcar porque va a perder o va a ganar. 
-    if($matrizDeDecision[3 * $this->tamanoTablero + 0] == 2)
+    if($this->revisarHeuristicaFilas(0, $matrizDeDesicion) == false)
     {
-      //Si esta vacio se puede marcar.
-      if($this->obtenerValorDePosicion(0, 0) == "")
-      { 
-        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
+      if($this->revisarHeuristicaFilas(1, $matrizDeDesicion) == false)
+      {
+        return $this->revisarHeuristicaFilas(2, $matrizDeDesicion); 
       }
       else
       {
-        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
+        return true; 
       }
-      return true; 
     }
     else
     {
-      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2)
-      {
-        if($this->obtenerValorDePosicion(0, 1) == "")
-        { 
-          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 1);
-        }
-        else
-        {
-          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 1);
-        }
-        return true; 
-      }
-      else
-      {
-        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2)
-        {
-          if($this->obtenerValorDePosicion(0, 2) == "")
-          { 
-            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
-          }
-          else
-          {
-            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
-          }
-        }
-        return true; 
-      }
+      return true; 
     }
     //Fin de heuristica #1
     //Inicio segunda heuristica #2 // Si en una columna hay un dos 
-    if($matrizDeDecision[0 * $this->tamanoTablero + 3] == 2)
+    if($this->revisarHeuristicaColumnas(0, $matrizDeDesicion) == false)
     {
-      //Si esta vacio se puede marcar.
-      if($this->obtenerValorDePosicion(0, 0) == "")
-      { 
-        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 0);
+      if($this->revisarHeuristicaColumnas(1, $matrizDeDesicion) == false)
+      {
+        return $this->revisarHeuristicaColumnas(2, $matrizDeDesicion); 
       }
       else
       {
-        $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 0, 2);
+        return true; 
       }
-      return true; 
     }
     else
     {
-      if($matrixDeDecision[3 * $this->tamanoTablero + 1] == 2)
-      {
-        if($this->obtenerValorDePosicion(0, 1) == "")
-        { 
-          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 0);
-        }
-        else
-        {
-          $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 1, 2);
-        }
-        return true; 
-      }
-      else
-      {
-        if($matrixDeDecision[3 * $this->tamanoTablero + 2] == 2)
-        {
-          if($this->obtenerValorDePosicion(0, 2) == "")
-          { 
-            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 0);
-          }
-          else
-          {
-            $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], 2, 2);
-          }
-        }
-        return true; 
-      }
+      return true; 
     }
     //Fin de heuristica #2
     //Inicio de la tercera heuristica #3 
-    $posicionX = -1;
-    $posicionY = -1; 
-    for($indice = 0; $indice < 2; $indice++)
-    {
-      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2)
-      {
-        if($indice == 0 && $matrixDeDecision[3 * $this->tamanoTablero + $indice2] == 0)
-        { 
-            $posicionY = $indice2; 
-        }
-        else
-        {
-          if(indice == 1 && $matrixDeDecision[$indice2 * $this->tamanoTablero + 3] == 0)
-          {
-
-            $posicionX = $indice2;
-          }
-        }
-      }
-    }
-    if($posicionX != -1 && $posicionY != -1)
-    {
-      $this->marcarEnTablero($matrizDeDecision[3 * $this->tamanoTablero + 3], $posicionX, $posicionY);
-      return true; 
-    }// Si no cae en ninguna de las heuristicas anteriores que pacha? 
-    //fin de la heuristica
-    return false; 
+    return $this->revisarHeuristicaDiagonales($matrizDeDesicion);
   }
+  
+  
   function jugadaMaquina()
   {
     $matrizDeX = $this->armarMatrizDeDecision("X");
     $matrizDeO = $this->armarMatrizDeDecision("O");
-    //Revisamos heuristica para opcion de ganar. 
-    $yaJugo = false; 
+    //Revisamos heuristica para opcion de ganar.  
     if($this->revisionHeurisiticas($matrizDeO) == false)
     {
-      if($this->revisionHeurisiticas($matrizDeX))
+      if($this->revisionHeurisiticas($matrizDeX) == false)
       { 
         if($this->obtenerValorDePosicion(1, 1) == "")
         {
-          $this->marcarOEnElTablero(1, 1); 
+          $this->marcarOEnElTablero(1, 1);
+          return true;
         }
         else
-        {
-          for($indice = 0; $indice < $this->tamanoTablero, $indice++)
+        {  
+          for($indice = 0; $indice < $this->tamanoTablero; $indice++)
           {
-            for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2)
+            for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++)
             {
-              if($this->obtenerValorDePosicion($indice, $indice) == "" && $indice != 1 && $indice2 == 1 && !$yaJugo)
+              if($this->obtenerValorDePosicion($indice, $indice2) == "" && $indice != 1 && $indice2 != 1)
               {
-                marcarOEnElTablero($indice, $indice2); 
+                $this->marcarOEnElTablero($indice, $indice2); 
+                return true; 
               }
             }
-            if($yaJugo)
-            {
-              break; 
-            }
           }
-        }
-      }   
+        }   
+      }
     }
-
+    return false;
   }
-  
-
 
   function limpiarTablero(){
     for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
@@ -409,11 +396,17 @@ class JuegoTikTakToe{
 
 $juego = new JuegoTikTakToe();
 
-/*print($juego->turno(0,0,"X"));
-print($juego->turno(1,1,"X"));
-print($juego->turno(2,2,"X"));
+print($juego->turno(0,0,"X"));
 
-  
+$juego->immprimirTablero();
+print($juego->turno(1,1,"X"));
+
+$juego->immprimirTablero();
+print($juego->turno(2,1,"X"));
+
+$juego->immprimirTablero();
+
+ /* 
 if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
 {
  // print("Gano\n");
