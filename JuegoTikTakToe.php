@@ -381,7 +381,7 @@ class JuegoTikTakToe{
     $split = str_split($entradaTablero);
     $this->tablero = $split;
     for($indice = 0; $indice < 9; $indice++){
-      if($this->tablero[$indice] == "_"){
+      if($split[$indice] == "_"){
         $this->tablero[$indice] = "";
       }
     }
