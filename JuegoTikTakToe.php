@@ -384,6 +384,9 @@ class JuegoTikTakToe{
       if($split[$indice] == "_"){
         $this->tablero[$indice] = "";
       }
+      else{
+        $this->tablero[$indice] = split[$indice];
+      }
     }
   }
   function immprimirTablero(){
