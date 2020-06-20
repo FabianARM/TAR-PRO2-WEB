@@ -7,6 +7,7 @@ class JuegoTikTakToe{
   public $puntosParaGanar = 3;
   public $tablero = array(); 
   public $tamanoTablero = 3; 
+  // ToDo: contar segundos hasta la victoria
   public $tiempoActualSegundos = 10;  // Se tiene que llevar un conteo, de momento, quemado para pruebas
 	public $idUsuario = "JUGADOR";
   
@@ -47,7 +48,8 @@ class JuegoTikTakToe{
           }
           $coordenadaY++;
         }
-        else{
+        else
+        {
           if($this->obtenerValorDePosicion($coordenadaX,$coordenadaY) != "" && $this->obtenerValorDePosicion($coordenadaX,$coordenadaY) == $this->obtenerValorDePosicion($coordenadaX + 1,$coordenadaY - 1)){
             $contador++; 
             if($contador == $this->puntosParaGanar){
@@ -232,24 +234,9 @@ class JuegoTikTakToe{
       $coordenadaX++;
     }
     return false; 
-    /*
-    if($matrizDeDesicion[3 * $this->tamanoTablero + coordena] == 2)
-    {
-      //Si esta vacio se puede marcar.
-      if($this->obtenerValorDePosicion(0, 0) == "")
-      { 
-        $this->marcarOEnElTablero(0, 0);
-      }
-      else
-      {
-        if($this->obtenerValorDePosicion(2, 0) == "")
-        {
-          $this->marcarOEnElTablero(2, 0);
-        }
-      }
-    }
-    */
+    
   }
+
   function revisarHeuristicaColumnas($coordenadaX, $matrizDeDesicion)
   {
     $coordenadaY = 0; 
@@ -389,6 +376,11 @@ class JuegoTikTakToe{
       }
       print(""."\n");
     }
+  }
+
+  function cambiarNombre(String $nombre)
+  {
+    $this->idUsuario = $nombre;
   }
 }
 
