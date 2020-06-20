@@ -26,10 +26,6 @@ bool determinarGanador()
   
   <!-- Mensajes para comunicarse con la clase HolaMundo. -->
   
-  <message name="">
-    <part name="" type="xsd:" />
-  </message>
-  
   <message name="realizarTurnoIN">
     <part name="coordenadaX" type="xsd:int"/>
     <part name="coordenadaY" type="xsd:int"/>
@@ -39,28 +35,46 @@ bool determinarGanador()
   <message name="realizarTurnoOUT">
     <part name="return" type="xsd:string"/>
   </message>
+
+  <message name="revisarGanadorIN"/>
+
+  <message name="revisarGanadorOUT">
+    <part name="return" type="xsd:boolean"/>
+  </message>
+
+  <message name="cambiarNombreIN">
+    <part name="nombre" type="xsd:string"/>
+  </message>
+
+  <message name="cambiarNombreOUT">
+  </message>
   
   
   <!--Puerto para comunicar con la clase tiktaktoe-->
    
 	<portType name="TikTakToePort">
+
 		<operation name="turno">
 			<documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
 			<input message="tns:realizarTurnoIN"/>
 			<output message="tns:realizarTurnoOUT"/>		
-    </operation>
-	</portType>
-  
-  <message name="guardarTiempoIn">
-		<part name="nombre" type="xsd:string"/>
-		<part name="tiempo" type="xsd:string"/> 
-	</message>
+    	</operation>
 
-	<message name="guardarTiempoOut" />
-  
-  
-  
-  
+		<operation name="cambiarNombre">
+			<documentation>TikTakToe::cambiarNombre() Cambiar el nombre del jugador para el registro del record</documentation>
+			<input message="tns:cambiarNombreIN"/>
+			<output message="tns:cambiarNombreOUT"/>		
+		</operation>
+
+		<operation name="revisarGanador">
+			<documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
+			<input message="tns:revisarGanadorIN"/>
+			<output message="tns:revisarGanadorOUT"/>		
+		</operation>
+
+	</portType>
+
+
 	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
 
 	<binding name="TikTakToeBinding" type="tns:TikTakToePort">
