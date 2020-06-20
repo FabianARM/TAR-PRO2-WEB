@@ -383,31 +383,4 @@ class JuegoTikTakToe{
     $this->idUsuario = $nombre;
   }
 }
-
-//Prueba 
-
-$juego = new JuegoTikTakToe();
-
-print($juego->turno(0,0,"X"));
-
-$juego->immprimirTablero();
-print($juego->turno(1,1,"X"));
-
-$juego->immprimirTablero();
-print($juego->turno(2,1,"X"));
-
-$juego->immprimirTablero();
-
- /* 
-if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
-{
- // print("Gano\n");
-}
-else{
- // print("No gano\n");
-}
-  
-//$juego->immprimirTablero();
-*/
-
 ?>
