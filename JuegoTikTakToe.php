@@ -116,8 +116,9 @@ class JuegoTikTakToe{
     $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
   }
   
-  function turno($coordenadaX, $coordenadaY, $caracter)
+  function turno($tableroEntrada, $coordenadaX, $coordenadaY, $caracter)
   {
+    $this->recuperarTablero($tableroEntrada); 
     if($caracter == "X")
     {
       $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);
@@ -129,9 +130,8 @@ class JuegoTikTakToe{
 			// OJO: Se tiene que llamar cuando el jugador gane, no el caso de la maquina
       $this->verificarRecord();
     }
-    
-    
-    return $this->revisarGanador(); 
+   
+    return $this->tableroToString();
   }
 
   function verificarRecord()
@@ -158,7 +158,7 @@ class JuegoTikTakToe{
 				
 				$insertado = true;
 				break;
-			}				
+			}	
 		}
 		
 		// Si hay menos de 10 elementos y no se inserto nada. Caso en que tiempoActual sea mayor que los de la lista.
@@ -363,7 +363,29 @@ class JuegoTikTakToe{
       $this->tablero[$indice] = "";
     }
   }
-  
+  function tableroToString(){
+    $tableroToString = "";
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
+      for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
+        if($this->obtenerValorDePosicion($indice, $indice2) == ""){
+          $tableroToString = $tableroToString."_";
+        }
+        else{
+          $tableroToString = $tableroToString.$this->obtenerValorDePosicion($indice, $indice2);  
+        }
+      }
+    }
+    return $tableroToString; 
+  }
+  function recuperarTablero($entradaTablero){
+    $split = str_split($entradaTablero);
+    $this->tablero = $split;
+    for($indice = 0; $indice < 9; $indice++){
+      if($this->tablero[$indice] == "_"){
+        $this->tablero[$indice] = "";
+      }
+    }
+  }
   function immprimirTablero(){
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
@@ -383,31 +405,4 @@ class JuegoTikTakToe{
     $this->idUsuario = $nombre;
   }
 }
-
-//Prueba 
-
-$juego = new JuegoTikTakToe();
-
-print($juego->turno(0,0,"X"));
-
-$juego->immprimirTablero();
-print($juego->turno(1,1,"X"));
-
-$juego->immprimirTablero();
-print($juego->turno(2,1,"X"));
-
-$juego->immprimirTablero();
-
- /* 
-if($juego->turno(0,0,"O") || $juego->turno(1,0,"O") || $juego->turno(2,0,"O"))
-{
- // print("Gano\n");
-}
-else{
- // print("No gano\n");
-}
-  
-//$juego->immprimirTablero();
-*/
-
 ?>
