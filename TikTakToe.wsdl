@@ -3,6 +3,9 @@
 Esta era una primera version de l wsdl. 
 string realizarTurno(idJugador, x, y)(edited)
 bool determinarGanador()
+
+string realizarTurno(idJugador, x, y)
+bool determinarGanador()
 -->
 
 <!-- Descripción WSDL de la clase Hola Mundo. -->
@@ -27,51 +30,40 @@ bool determinarGanador()
     <part name="" type="xsd:" />
   </message>
   
-  <message name="coordenadaXRequest">
+  <message name="realizarTurnoIN">
     <part name="coordenadaX" type="xsd:int"/>
-  </message>
-  
-  <message name="coordenadaYRequest">
     <part name="coordenadaY" type="xsd:int"/>
-  </message>
-  
-  <message name="turnoResponse">
-    <part name="return" type="xsd:boolean"/>
-  </message>
-  
-  <message name="tableroRequest"/>
-  
-  <message name="tableroResponse">
-    <part name="tablero" type="xsd:string"/>
-  </message>  
-  
-  <message name="caracterRequest">
     <part name="caracter" type="xsd:string"/>
-  </message>  
+  </message>
+  
+  <message name="realizarTurnoOUT">
+    <part name="return" type="xsd:string"/>
+  </message>
   
   
   <!--Puerto para comunicar con la clase tiktaktoe-->
    
-	<portType name="TikTakToe">
+	<portType name="TikTakToePort">
 		<operation name="turno">
 			<documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
-			<input message="tns:coordenadaXRequest"/>
-      <input message="tns:coordenadaYRequest"/>
-      <input message="tns:caracter">
-			<output message="tns:turnoResponse"/>		
+			<input message="tns:realizarTurnoIN"/>
+			<output message="tns:realizarTurnoOUT"/>		
     </operation>
-    
-		<operation name="getTablero">
-			<documentation>TikTakToe:getTablero Se obtiene el tablero del juego.</documentation>
-			<input message="tns:tableroRequest"/>
-			<output message="tns:tableroResponse"/>
-		</operation>
-
 	</portType>
+  
+  <message name="guardarTiempoIn">
+		<part name="nombre" type="xsd:string"/>
+		<part name="tiempo" type="xsd:string"/> 
+	</message>
+
+	<message name="guardarTiempoOut" />
+  
+  
+  
   
 	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
 
-	<binding name="TikTakToeBinding" type="tns:TikTakToe">
+	<binding name="TikTakToeBinding" type="tns:TikTakToePort">
 		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
 		
 		<operation name="turno">
@@ -87,27 +79,13 @@ bool determinarGanador()
 						   namespace="urn:TikTakToe"/>
 			</output>
 		</operation>
-		
-		<operation name="getTablero">
-			<soap:operation soapAction="urn:TikTakToe#TikTakToe#getTablero"/>
-			<input>
-				<soap:body use="encoded"
-				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-						   namespace="urn:TikTakToe"/>
-			</input>
-			<output>
-				<soap:body use="encoded"
-				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-						   namespace="urn:TikTakToe"/>
-			</output>
-		</operation>
-		
+    
 	</binding>
 
 	<!-- Punto de comunicación con la clase HolaMundo -->
 
 	<service name="TikTakToeService">
-		<port name="TikTakToePort" binding="tns:ECCI_HolaMundoBinding">
+		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
 			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/HolaMundoServiceRPCEncoded/"/>
 		</port>
 	</service>
