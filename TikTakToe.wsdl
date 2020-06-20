@@ -93,6 +93,34 @@ bool determinarGanador()
 						   namespace="urn:TikTakToe"/>
 			</output>
 		</operation>
+		
+		<operation name="cambiarNombre">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#cambiarNombre"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="revisarGanador">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#revisarGanador"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
     
 	</binding>
 
