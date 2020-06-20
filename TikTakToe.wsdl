@@ -26,6 +26,10 @@ bool determinarGanador()
   
   <!-- Mensajes para comunicarse con la clase HolaMundo. -->
   
+  <types>
+		<xsd:schema targetNamespace="urn:TikTakToe"/>
+</types>
+  
   <message name="realizarTurnoIN">
     <part name="coordenadaX" type="xsd:int"/>
     <part name="coordenadaY" type="xsd:int"/>
@@ -128,7 +132,7 @@ bool determinarGanador()
 
 	<service name="TikTakToeService">
 		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
-			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/HolaMundoServiceRPCEncoded/"/>
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/"/>
 		</port>
 	</service>
 </definitions>
