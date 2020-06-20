@@ -14,7 +14,7 @@ namespace Gato
         [STAThread]
         static void Main()
         {
-            ServicioGato.TikTakToePortClient servidor = new ServicioGato.TikTakToePortClient();
+            ServicioGatoFabian.TikTakToePortClient servidor = new ServicioGatoFabian.TikTakToePortClient();
 
             string resultado = servidor.turno("_________", 0, 0, "X");
             resultado = servidor.turno(resultado, 0, 1, "X");

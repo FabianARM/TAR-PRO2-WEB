@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="nZ4fQBL7UpR74RfJ3TngEmDShi5QT0tSl/+MmiJv6JY=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="V/vS/ZwGe1kcEZdWegyLX49feXQaIvv3xQtDMlEK+Q0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="TikTakToeBinding">
+    <bindingConfiguration bindingType="basicHttpBinding" name="TikTakToeBinding1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>TikTakToeBinding</serializedValue>
+          <serializedValue>TikTakToeBinding1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="TikTakToePort" contract="ServicioGato.TikTakToePort" bindingType="basicHttpBinding" address="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/" bindingConfiguration="TikTakToeBinding">
+    <endpoint name="TikTakToePort1" contract="ServicioGatoJose.TikTakToePort" bindingType="basicHttpBinding" address="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/" bindingConfiguration="TikTakToeBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/</serializedValue>
+          <serializedValue>http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -124,10 +124,10 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>TikTakToeBinding</serializedValue>
+          <serializedValue>TikTakToeBinding1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServicioGato.TikTakToePort</serializedValue>
+          <serializedValue>ServicioGatoJose.TikTakToePort</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -187,7 +187,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>TikTakToePort</serializedValue>
+          <serializedValue>TikTakToePort1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

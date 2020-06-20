@@ -48,7 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ServicioGato\Reference.cs">
+    <Compile Include="Connected Services\ServicioGatoFabian\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServicioGatoJose\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -70,7 +75,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\ServicioGato\TikTakToe.wsdl" />
+    <None Include="Connected Services\ServicioGatoFabian\TikTakToe.wsdl" />
+    <None Include="Connected Services\ServicioGatoJose\TikTakToe.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,16 +94,29 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServicioGato\" />
+    <WCFMetadataStorage Include="Connected Services\ServicioGatoFabian\" />
+    <WCFMetadataStorage Include="Connected Services\ServicioGatoJose\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGato\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioGatoJose\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGato\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioGatoJose\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGato\Reference.svcmap">
+    <None Include="Connected Services\ServicioGatoJose\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioGatoFabian\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioGatoFabian\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioGatoFabian\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

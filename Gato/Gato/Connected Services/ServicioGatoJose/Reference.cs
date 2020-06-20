@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gato.ServicioGato {
+namespace Gato.ServicioGatoJose {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:TikTakToe", ConfigurationName="ServicioGato.TikTakToePort")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:TikTakToe", ConfigurationName="ServicioGatoJose.TikTakToePort")]
     public interface TikTakToePort {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
@@ -51,12 +51,12 @@ namespace Gato.ServicioGato {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface TikTakToePortChannel : Gato.ServicioGato.TikTakToePort, System.ServiceModel.IClientChannel {
+    public interface TikTakToePortChannel : Gato.ServicioGatoJose.TikTakToePort, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TikTakToePortClient : System.ServiceModel.ClientBase<Gato.ServicioGato.TikTakToePort>, Gato.ServicioGato.TikTakToePort {
+    public partial class TikTakToePortClient : System.ServiceModel.ClientBase<Gato.ServicioGatoJose.TikTakToePort>, Gato.ServicioGatoJose.TikTakToePort {
         
         public TikTakToePortClient() {
         }

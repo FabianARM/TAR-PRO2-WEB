@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ed2b1a7-0a81-49dd-acb8-781791656d38" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="83a2b378-83a0-44a2-b8fe-1025a04abc75" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TikTakToe.wsdl" MetadataType="Wsdl" ID="0bdf73ff-0368-46fc-a149-7602cdb57a07" SourceId="1" SourceUrl="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/?wsdl" />
+    <MetadataFile FileName="TikTakToe.wsdl" MetadataType="Wsdl" ID="10c53075-adaa-4b8a-8c58-d8ba5df4211f" SourceId="1" SourceUrl="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
