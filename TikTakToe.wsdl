@@ -30,28 +30,37 @@ bool determinarGanador()
 		<xsd:schema targetNamespace="urn:TikTakToe"/>
 </types>
   
-  <message name="realizarTurnoIN">
-    <part name="coordenadaX" type="xsd:int"/>
-    <part name="coordenadaY" type="xsd:int"/>
-    <part name="caracter" type="xsd:string"/>
-  </message>
+	<message name="realizarTurnoIN">
+		<part name="coordenadaX" type="xsd:int"/>
+		<part name="coordenadaY" type="xsd:int"/>
+		<part name="caracter" type="xsd:string"/>
+	</message>
+
+	<message name="realizarTurnoOUT">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="revisarGanadorIN"/>
+
+	<message name="revisarGanadorOUT">
+		<part name="return" type="xsd:boolean"/>
+	</message>
+
+	<message name="cambiarNombreIN">
+		<part name="nombre" type="xsd:string"/>
+	</message>
+
+	<message name="cambiarNombreOUT">
+	</message>
+
+	<message name="obtenerRecordsIN">
+	</message>
+
+	<message name="obtenerRecordsOUT">
+		<part name="return" type="xsd:string"/>
+	</message>
   
-  <message name="realizarTurnoOUT">
-    <part name="return" type="xsd:string"/>
-  </message>
-
-  <message name="revisarGanadorIN"/>
-
-  <message name="revisarGanadorOUT">
-    <part name="return" type="xsd:boolean"/>
-  </message>
-
-  <message name="cambiarNombreIN">
-    <part name="nombre" type="xsd:string"/>
-  </message>
-
-  <message name="cambiarNombreOUT">
-  </message>
+  
   
   
   <!--Puerto para comunicar con la clase tiktaktoe-->
@@ -74,6 +83,12 @@ bool determinarGanador()
 			<documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
 			<input message="tns:revisarGanadorIN"/>
 			<output message="tns:revisarGanadorOUT"/>		
+		</operation>
+		
+		<operation name="obtenerRecords">
+			<documentation>TikTakToe::obtenerRecords() Obtener records actuales</documentation>
+			<input message="tns:obtenerRecordsIN"/>
+			<output message="tns:obtenerRecordsOUT"/>		
 		</operation>
 
 	</portType>
@@ -114,6 +129,20 @@ bool determinarGanador()
 		
 		<operation name="revisarGanador">
 			<soap:operation soapAction="urn:TikTakToe#TikTakToe#revisarGanador"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="obtenerRecords">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#obtenerRecords"/>
 			<input>
 				<soap:body use="encoded"
 				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
