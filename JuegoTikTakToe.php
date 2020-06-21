@@ -385,7 +385,7 @@ class JuegoTikTakToe{
         $this->tablero[$indice] = "";
       }
       else{
-        $this->tablero[$indice] = split[$indice];
+        $this->tablero[$indice] = $split[$indice];
       }
     }
   }
