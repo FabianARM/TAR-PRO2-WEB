@@ -41,7 +41,36 @@ namespace Gato
         {
             tablero = gato.turno(tablero, coordenada.x, coordenada.y, "X");
             marcarCasillaOponente();
-            
+        }
+
+        // Se marca de acuerdo a lo que tenga tablero
+        private void marcarCasillaOponente()
+        {
+            char casilla = ' ';
+            for(int contador = 0; contador < tablero.Length; ++contador)
+            {
+                casilla = tablero[contador];
+                if(casilla == 'O')
+                {
+                    pintarCasillaOponente(contador);
+                }
+            }
+        }
+
+        private void pintarCasillaOponente(int posicion)
+        {
+            switch (posicion)
+            {
+                case 0: casilla0.Text = "O"; break;
+                case 1: casilla1.Text = "O"; break;
+                case 2: casilla2.Text = "O"; break;
+                case 3: casilla3.Text = "O"; break;
+                case 4: casilla4.Text = "O"; break;
+                case 5: casilla5.Text = "O"; break;
+                case 6: casilla6.Text = "O"; break;
+                case 7: casilla7.Text = "O"; break;
+                case 8: casilla8.Text = "O"; break;
+            }
         }
 
         private Coordenada convertirCoordenada(int posicionCasilla)
