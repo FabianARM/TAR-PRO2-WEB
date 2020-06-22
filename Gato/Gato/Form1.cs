@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gato.ServicioGato;
 
 namespace Gato
 {
     public partial class Form1 : Form
     {
-        private ServicioGatoJose.TikTakToePortClient gato;
+        private TikTakToePortClient gato;
         private string tablero;
         private const string ESTADO_INICIAL = "_________";
         private const string JUGADOR = " X ";
@@ -20,7 +21,7 @@ namespace Gato
         private const string CASILLA_VACIA = "      ";
         public Form1()
         {
-            gato = new ServicioGatoJose.TikTakToePortClient();
+            gato = new TikTakToePortClient();
             tablero = ESTADO_INICIAL;
             InitializeComponent();
         }
@@ -118,6 +119,22 @@ namespace Gato
             casilla7.Text = CASILLA_VACIA;
             casilla8.Text = CASILLA_VACIA;
         }
-    }
 
+        private void eventoEstadisticas(object sender, EventArgs e)
+        {
+            string resultadoServicio = gato.obtenerRecords();
+            string mensaje = "";
+            string[] registro;
+
+            foreach(string record in resultadoServicio.Split(';'))
+            {
+                if(record.Length > 0)
+                {
+                    registro = record.Split(',');
+                    mensaje += registro[0] + " " + registro[1] + '\n';
+                }
+            }
+            MessageBox.Show(mensaje, "Records");
+        }
+    }
 }

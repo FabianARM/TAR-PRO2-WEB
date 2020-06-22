@@ -134,7 +134,7 @@ bool determinarGanador()
 
 	<service name="TikTakToeService">
 		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
-			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/"/>
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/"/>
 		</port>
 	</service>
 </definitions>

@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ServicioGatoJose\Reference.cs">
+    <Compile Include="Connected Services\ServicioGato\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -73,7 +73,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\ServicioGatoJose\TikTakToe.wsdl" />
+    <None Include="Connected Services\ServicioGato\TikTakToe.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,16 +91,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServicioGatoJose\" />
+    <WCFMetadataStorage Include="Connected Services\ServicioGato\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGatoJose\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioGato\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGatoJose\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioGato\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioGatoJose\Reference.svcmap">
+    <None Include="Connected Services\ServicioGato\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

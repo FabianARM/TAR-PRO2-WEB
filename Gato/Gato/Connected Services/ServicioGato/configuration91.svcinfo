@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="pm/NdX7sjIKi9vbr+5diJNZGpplaB6c/EcUsQ+3WQ9g=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="3l8DzBJuvilp3hx3P8IUAUulOIGe4uri5/YSqJdBv1Q=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="TikTakToeBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="TikTakToePort" contract="ServicioGatoJose.TikTakToePort" bindingType="basicHttpBinding" address="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/" bindingConfiguration="TikTakToeBinding">
+    <endpoint name="TikTakToePort" contract="ServicioGato.TikTakToePort" bindingType="basicHttpBinding" address="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/" bindingConfiguration="TikTakToeBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/</serializedValue>
+          <serializedValue>http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
           <serializedValue>TikTakToeBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServicioGatoJose.TikTakToePort</serializedValue>
+          <serializedValue>ServicioGato.TikTakToePort</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
