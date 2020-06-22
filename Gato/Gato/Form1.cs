@@ -14,10 +14,11 @@ namespace Gato
     {
         private ServicioGatoJose.TikTakToePortClient gato;
         private string tablero;
+        private const string ESTADO_INICIAL = "_________";
         public Form1()
         {
             gato = new ServicioGatoJose.TikTakToePortClient();
-            tablero = "_________";
+            tablero = ESTADO_INICIAL;
             InitializeComponent();
         }
 
@@ -31,15 +32,14 @@ namespace Gato
                 casilla.Text = "X";
                 casilla.TextAlign = ContentAlignment.MiddleCenter;
 
-                Coordenada coordenada = convertirCoordenada(int.Parse(casilla.Name));
+                Coordenada coordenada = convertirCoordenada(int.Parse(casilla.Name[casilla.Name.Length - 1].ToString()));
                 marcarCasilla(coordenada);
             }
         }
 
         private void marcarCasilla(Coordenada coordenada)
         {
-            tablero = gato.turno(tablero, coordenada.x, coordenada.y, "X");
-            Console.Out.WriteLine(tablero);
+            tablero = gato.turno(coordenada.x, coordenada.y, "X");
             marcarCasillaOponente();
         }
 
@@ -100,6 +100,20 @@ namespace Gato
                 this.x = x;
                 this.y = y;
             }
+        }
+
+        private void eventoReiniciar(object sender, EventArgs e)
+        {
+            tablero = ESTADO_INICIAL;
+            casilla0.Text = "-";
+            casilla1.Text = "-";
+            casilla2.Text = "-";
+            casilla3.Text = "-";
+            casilla4.Text = "-";
+            casilla5.Text = "-";
+            casilla6.Text = "-";
+            casilla7.Text = "-";
+            casilla8.Text = "-";
         }
     }
 

@@ -18,11 +18,11 @@ namespace Gato.ServicioGatoJose {
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        string turno(string entradaTablero, int coordenadaX, int coordenadaY, string caracter);
+        string turno(int coordenadaX, int coordenadaY, string caracter);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        System.Threading.Tasks.Task<string> turnoAsync(string entradaTablero, int coordenadaX, int coordenadaY, string caracter);
+        System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#cambiarNombre", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -77,12 +77,12 @@ namespace Gato.ServicioGatoJose {
                 base(binding, remoteAddress) {
         }
         
-        public string turno(string entradaTablero, int coordenadaX, int coordenadaY, string caracter) {
-            return base.Channel.turno(entradaTablero, coordenadaX, coordenadaY, caracter);
+        public string turno(int coordenadaX, int coordenadaY, string caracter) {
+            return base.Channel.turno(coordenadaX, coordenadaY, caracter);
         }
         
-        public System.Threading.Tasks.Task<string> turnoAsync(string entradaTablero, int coordenadaX, int coordenadaY, string caracter) {
-            return base.Channel.turnoAsync(entradaTablero, coordenadaX, coordenadaY, caracter);
+        public System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter) {
+            return base.Channel.turnoAsync(coordenadaX, coordenadaY, caracter);
         }
         
         public void cambiarNombre(string nombre) {

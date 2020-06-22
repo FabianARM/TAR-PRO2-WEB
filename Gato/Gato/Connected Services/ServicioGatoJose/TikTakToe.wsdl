@@ -4,7 +4,6 @@
     <xsd:schema targetNamespace="urn:TikTakToe" />
   </wsdl:types>
   <wsdl:message name="realizarTurnoIN">
-    <wsdl:part name="entradaTablero" type="xsd:string " />
     <wsdl:part name="coordenadaX" type="xsd:int" />
     <wsdl:part name="coordenadaY" type="xsd:int" />
     <wsdl:part name="caracter" type="xsd:string" />
@@ -87,7 +86,7 @@
   </wsdl:binding>
   <wsdl:service name="TikTakToeService">
     <wsdl:port name="TikTakToePort" binding="tns:TikTakToeBinding">
-      <soap:address location="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/" />
+      <soap:address location="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
