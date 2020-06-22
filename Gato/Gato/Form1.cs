@@ -15,6 +15,8 @@ namespace Gato
         private ServicioGatoJose.TikTakToePortClient gato;
         private string tablero;
         private const string ESTADO_INICIAL = "_________";
+        private const string JUGADOR = " X ";
+        private const string OPONENTE = " O ";
         public Form1()
         {
             gato = new ServicioGatoJose.TikTakToePortClient();
@@ -27,9 +29,9 @@ namespace Gato
             Label casilla = (Label)sender;
 
             // No marcar una que ya este marcada
-            if(casilla.Text != "X" && casilla.Text != "O")
+            if(casilla.Text != JUGADOR && casilla.Text != OPONENTE)
             {
-                casilla.Text = "X";
+                casilla.Text = JUGADOR;
                 casilla.TextAlign = ContentAlignment.MiddleCenter;
 
                 Coordenada coordenada = convertirCoordenada(int.Parse(casilla.Name[casilla.Name.Length - 1].ToString()));
@@ -61,15 +63,15 @@ namespace Gato
         {
             switch (posicion)
             {
-                case 0: casilla0.Text = "O"; break;
-                case 1: casilla1.Text = "O"; break;
-                case 2: casilla2.Text = "O"; break;
-                case 3: casilla3.Text = "O"; break;
-                case 4: casilla4.Text = "O"; break;
-                case 5: casilla5.Text = "O"; break;
-                case 6: casilla6.Text = "O"; break;
-                case 7: casilla7.Text = "O"; break;
-                case 8: casilla8.Text = "O"; break;
+                case 0: casilla0.Text = OPONENTE; break;
+                case 1: casilla1.Text = OPONENTE; break;
+                case 2: casilla2.Text = OPONENTE; break;
+                case 3: casilla3.Text = OPONENTE; break;
+                case 4: casilla4.Text = OPONENTE; break;
+                case 5: casilla5.Text = OPONENTE; break;
+                case 6: casilla6.Text = OPONENTE; break;
+                case 7: casilla7.Text = OPONENTE; break;
+                case 8: casilla8.Text = OPONENTE; break;
             }
         }
 
@@ -105,15 +107,15 @@ namespace Gato
         private void eventoReiniciar(object sender, EventArgs e)
         {
             tablero = ESTADO_INICIAL;
-            casilla0.Text = "-";
-            casilla1.Text = "-";
-            casilla2.Text = "-";
-            casilla3.Text = "-";
-            casilla4.Text = "-";
-            casilla5.Text = "-";
-            casilla6.Text = "-";
-            casilla7.Text = "-";
-            casilla8.Text = "-";
+            casilla0.Text = CASILLA_VACIA;
+            casilla1.Text = CASILLA_VACIA;
+            casilla2.Text = CASILLA_VACIA;
+            casilla3.Text = CASILLA_VACIA;
+            casilla4.Text = CASILLA_VACIA;
+            casilla5.Text = CASILLA_VACIA;
+            casilla6.Text = CASILLA_VACIA;
+            casilla7.Text = CASILLA_VACIA;
+            casilla8.Text = CASILLA_VACIA;
         }
     }
 
