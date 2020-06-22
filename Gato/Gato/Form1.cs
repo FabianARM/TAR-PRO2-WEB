@@ -39,7 +39,7 @@ namespace Gato
 
         private void marcarCasilla(Coordenada coordenada)
         {
-            tablero = gato.turno(coordenada.x, coordenada.y, "X");
+            tablero = gato.turno(coordenada.x, coordenada.y, tablero);
             marcarCasillaOponente();
         }
 
