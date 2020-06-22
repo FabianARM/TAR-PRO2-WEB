@@ -15,9 +15,7 @@ class JuegoTikTakToe{
   {
     $this->db = new BaseDatos();
     //Inicializamos el tablero, que es de tamaño 9*9 
-    for($indice = 0; $indice < $this->tamanoTablero * $this->tamanoTablero; $indice++){
-      $this->tablero[$indice] = "";
-    }
+
   }
   
   function getTablero(){
@@ -116,21 +114,17 @@ class JuegoTikTakToe{
     $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
   }
   
-  function turno($tableroEntrada, $coordenadaX, $coordenadaY, $caracter)
+  function turno($coordenadaX, $coordenadaY, $caracter)
   {
-    $this->recuperarTablero($tableroEntrada); 
-    if($caracter == "X")
-    {
-      $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);
-    }
-    $this->jugadaMaquina(); 
+    $this->tablero = $this->recuperarTablero($caracter); 
+    $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);// Jugada del jugador 
+    $this->jugadaMaquina(); // Jugada de la mquina. 
     if($this->revisarGanador())
     {
       // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
 			// OJO: Se tiene que llamar cuando el jugador gane, no el caso de la maquina
       $this->verificarRecord();
     }
-   
     return $this->tableroToString();
   }
 
@@ -183,11 +177,9 @@ class JuegoTikTakToe{
       $record = $listaRecords[$posicion];
       
       $resultado = $resultado.$record->nombre.",".$record->tiempo.";";
-    }
-    
+    }  
     return $resultado;
   }
-  
     
   function armarMatrizDeDecision($caracter){
     //Iniciamos la matrix de decision. 
@@ -218,6 +210,7 @@ class JuegoTikTakToe{
     $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
     return $matrixDeDecision; 
   }
+  
   function revisarHeuristicaFilas($coordenadaY, $matrizDeDesicion)
   {
     $coordenadaX = 0; 
@@ -377,18 +370,20 @@ class JuegoTikTakToe{
     }
     return $tableroToString; 
   }
+  
   function recuperarTablero($entradaTablero){
     $split = str_split($entradaTablero);
-    $this->tablero = $split;
     for($indice = 0; $indice < 9; $indice++){
-      if($split[$indice] == "_"){
-        $this->tablero[$indice] = "";
+      if($split[$indice] == "_"){//Si lo que hay es un _ eso significa que en el tablero debe haber un espacio en blanco. 
+        $split[$indice] = "";
       }
-      else{
-        $this->tablero[$indice] = $split[$indice];
+      else{// Si lo que hay es un caracter debe mantenerlo. 
+        $split[$indice] = $split[$indice];
       }
     }
+    return $split;
   }
+  
   function immprimirTablero(){
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){

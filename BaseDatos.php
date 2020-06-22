@@ -34,3 +34,4 @@ class BaseDatos
     fclose($archivo);
   }
 }
+?>

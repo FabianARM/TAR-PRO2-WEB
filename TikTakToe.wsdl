@@ -31,7 +31,6 @@ bool determinarGanador()
 </types>
   
 	<message name="realizarTurnoIN">
-    <part name="entradaTablero" type="xsd:string "/>
 		<part name="coordenadaX" type="xsd:int"/>
 		<part name="coordenadaY" type="xsd:int"/>
 		<part name="caracter" type="xsd:string"/>
