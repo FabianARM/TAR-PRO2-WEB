@@ -15,10 +15,6 @@
   <wsdl:message name="revisarGanadorOUT">
     <wsdl:part name="return" type="xsd:boolean" />
   </wsdl:message>
-  <wsdl:message name="cambiarNombreIN">
-    <wsdl:part name="nombre" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="cambiarNombreOUT" />
   <wsdl:message name="obtenerRecordsIN" />
   <wsdl:message name="obtenerRecordsOUT">
     <wsdl:part name="return" type="xsd:string" />
@@ -28,11 +24,6 @@
       <documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
       <wsdl:input message="tns:realizarTurnoIN" />
       <wsdl:output message="tns:realizarTurnoOUT" />
-    </wsdl:operation>
-    <wsdl:operation name="cambiarNombre">
-      <documentation>TikTakToe::cambiarNombre() Cambiar el nombre del jugador para el registro del record</documentation>
-      <wsdl:input message="tns:cambiarNombreIN" />
-      <wsdl:output message="tns:cambiarNombreOUT" />
     </wsdl:operation>
     <wsdl:operation name="revisarGanador">
       <documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
@@ -49,15 +40,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
     <wsdl:operation name="turno">
       <soap:operation soapAction="urn:TikTakToe#TikTakToe#turno" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="cambiarNombre">
-      <soap:operation soapAction="urn:TikTakToe#TikTakToe#cambiarNombre" />
       <wsdl:input>
         <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

@@ -24,13 +24,6 @@ namespace Gato.ServicioGatoJose {
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#cambiarNombre", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        void cambiarNombre(string nombre);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#cambiarNombre", ReplyAction="*")]
-        System.Threading.Tasks.Task cambiarNombreAsync(string nombre);
-        
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -83,14 +76,6 @@ namespace Gato.ServicioGatoJose {
         
         public System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter) {
             return base.Channel.turnoAsync(coordenadaX, coordenadaY, caracter);
-        }
-        
-        public void cambiarNombre(string nombre) {
-            base.Channel.cambiarNombre(nombre);
-        }
-        
-        public System.Threading.Tasks.Task cambiarNombreAsync(string nombre) {
-            return base.Channel.cambiarNombreAsync(nombre);
         }
         
         public bool revisarGanador() {
