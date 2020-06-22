@@ -17,6 +17,7 @@ namespace Gato
         private const string ESTADO_INICIAL = "_________";
         private const string JUGADOR = " X ";
         private const string OPONENTE = " O ";
+        private const string CASILLA_VACIA = "      ";
         public Form1()
         {
             gato = new ServicioGatoJose.TikTakToePortClient();

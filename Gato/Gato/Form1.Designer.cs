@@ -52,11 +52,11 @@ namespace Gato
             // 
             this.casilla0.AutoSize = true;
             this.casilla0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla0.Location = new System.Drawing.Point(300, 112);
+            this.casilla0.Location = new System.Drawing.Point(225, 115);
             this.casilla0.Name = "casilla0";
             this.casilla0.Size = new System.Drawing.Size(86, 46);
             this.casilla0.TabIndex = 0;
-            this.casilla0.Text = CASILLA_VACIA;
+            this.casilla0.Text = "      ";
             this.casilla0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla0.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -64,11 +64,11 @@ namespace Gato
             // 
             this.casilla1.AutoSize = true;
             this.casilla1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla1.Location = new System.Drawing.Point(418, 112);
+            this.casilla1.Location = new System.Drawing.Point(343, 115);
             this.casilla1.Name = "casilla1";
             this.casilla1.Size = new System.Drawing.Size(86, 46);
             this.casilla1.TabIndex = 1;
-            this.casilla1.Text = CASILLA_VACIA;
+            this.casilla1.Text = "      ";
             this.casilla1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla1.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -76,11 +76,11 @@ namespace Gato
             // 
             this.casilla2.AutoSize = true;
             this.casilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla2.Location = new System.Drawing.Point(536, 112);
+            this.casilla2.Location = new System.Drawing.Point(461, 115);
             this.casilla2.Name = "casilla2";
             this.casilla2.Size = new System.Drawing.Size(86, 46);
             this.casilla2.TabIndex = 2;
-            this.casilla2.Text = CASILLA_VACIA;
+            this.casilla2.Text = "      ";
             this.casilla2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla2.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -88,11 +88,11 @@ namespace Gato
             // 
             this.casilla3.AutoSize = true;
             this.casilla3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla3.Location = new System.Drawing.Point(300, 212);
+            this.casilla3.Location = new System.Drawing.Point(225, 215);
             this.casilla3.Name = "casilla3";
             this.casilla3.Size = new System.Drawing.Size(86, 46);
             this.casilla3.TabIndex = 3;
-            this.casilla3.Text = CASILLA_VACIA;
+            this.casilla3.Text = "      ";
             this.casilla3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla3.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -100,11 +100,11 @@ namespace Gato
             // 
             this.casilla4.AutoSize = true;
             this.casilla4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla4.Location = new System.Drawing.Point(418, 212);
+            this.casilla4.Location = new System.Drawing.Point(343, 215);
             this.casilla4.Name = "casilla4";
             this.casilla4.Size = new System.Drawing.Size(86, 46);
             this.casilla4.TabIndex = 4;
-            this.casilla4.Text = CASILLA_VACIA;
+            this.casilla4.Text = "      ";
             this.casilla4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla4.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -112,11 +112,11 @@ namespace Gato
             // 
             this.casilla5.AutoSize = true;
             this.casilla5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla5.Location = new System.Drawing.Point(536, 212);
+            this.casilla5.Location = new System.Drawing.Point(461, 215);
             this.casilla5.Name = "casilla5";
             this.casilla5.Size = new System.Drawing.Size(86, 46);
             this.casilla5.TabIndex = 5;
-            this.casilla5.Text = CASILLA_VACIA;
+            this.casilla5.Text = "      ";
             this.casilla5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla5.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -124,11 +124,11 @@ namespace Gato
             // 
             this.casilla6.AutoSize = true;
             this.casilla6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla6.Location = new System.Drawing.Point(300, 309);
+            this.casilla6.Location = new System.Drawing.Point(225, 312);
             this.casilla6.Name = "casilla6";
             this.casilla6.Size = new System.Drawing.Size(86, 46);
             this.casilla6.TabIndex = 7;
-            this.casilla6.Text = CASILLA_VACIA;
+            this.casilla6.Text = "      ";
             this.casilla6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla6.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -136,11 +136,11 @@ namespace Gato
             // 
             this.casilla7.AutoSize = true;
             this.casilla7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla7.Location = new System.Drawing.Point(418, 309);
+            this.casilla7.Location = new System.Drawing.Point(343, 312);
             this.casilla7.Name = "casilla7";
             this.casilla7.Size = new System.Drawing.Size(86, 46);
             this.casilla7.TabIndex = 8;
-            this.casilla7.Text = CASILLA_VACIA;
+            this.casilla7.Text = "      ";
             this.casilla7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla7.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -148,11 +148,11 @@ namespace Gato
             // 
             this.casilla8.AutoSize = true;
             this.casilla8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla8.Location = new System.Drawing.Point(536, 309);
+            this.casilla8.Location = new System.Drawing.Point(461, 312);
             this.casilla8.Name = "casilla8";
             this.casilla8.Size = new System.Drawing.Size(86, 46);
             this.casilla8.TabIndex = 6;
-            this.casilla8.Text = CASILLA_VACIA;
+            this.casilla8.Text = "      ";
             this.casilla8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla8.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
@@ -179,7 +179,7 @@ namespace Gato
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(281, 177);
+            this.label2.Location = new System.Drawing.Point(206, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(358, 46);
             this.label2.TabIndex = 12;
@@ -189,7 +189,7 @@ namespace Gato
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(392, 68);
+            this.label3.Location = new System.Drawing.Point(321, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 322);
             this.label3.TabIndex = 13;
@@ -199,7 +199,7 @@ namespace Gato
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(501, 68);
+            this.label4.Location = new System.Drawing.Point(430, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 322);
             this.label4.TabIndex = 15;
@@ -209,7 +209,7 @@ namespace Gato
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(281, 272);
+            this.label1.Location = new System.Drawing.Point(206, 275);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 46);
             this.label1.TabIndex = 16;
@@ -243,7 +243,6 @@ namespace Gato
         }
 
         #endregion
-        private const string CASILLA_VACIA = "      ";
         private System.Windows.Forms.Label casilla0;
         private System.Windows.Forms.Label casilla1;
         private System.Windows.Forms.Label casilla2;
