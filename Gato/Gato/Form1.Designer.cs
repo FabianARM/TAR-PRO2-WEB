@@ -39,7 +39,7 @@
             this.casilla8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // casilla0
             // 
             this.casilla0.AutoSize = true;
             this.casilla0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -51,7 +51,7 @@
             this.casilla0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla0.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label2
+            // casilla1
             // 
             this.casilla1.AutoSize = true;
             this.casilla1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,7 +63,7 @@
             this.casilla1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla1.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label3
+            // casilla2
             // 
             this.casilla2.AutoSize = true;
             this.casilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,7 +75,7 @@
             this.casilla2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla2.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label4
+            // casilla3
             // 
             this.casilla3.AutoSize = true;
             this.casilla3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,7 +87,7 @@
             this.casilla3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla3.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label5
+            // casilla4
             // 
             this.casilla4.AutoSize = true;
             this.casilla4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -99,7 +99,7 @@
             this.casilla4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla4.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label6
+            // casilla5
             // 
             this.casilla5.AutoSize = true;
             this.casilla5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,39 +111,39 @@
             this.casilla5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla5.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label8
+            // casilla6
             // 
             this.casilla6.AutoSize = true;
             this.casilla6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla6.Location = new System.Drawing.Point(395, 324);
-            this.casilla6.Name = "7";
+            this.casilla6.Location = new System.Drawing.Point(165, 325);
+            this.casilla6.Name = "6";
             this.casilla6.Size = new System.Drawing.Size(126, 46);
             this.casilla6.TabIndex = 7;
-            this.casilla6.Text = "label8";
+            this.casilla6.Text = "label7";
             this.casilla6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla6.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label9
+            // casilla7
             // 
             this.casilla7.AutoSize = true;
             this.casilla7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla7.Location = new System.Drawing.Point(614, 325);
-            this.casilla7.Name = "8";
+            this.casilla7.Location = new System.Drawing.Point(395, 325);
+            this.casilla7.Name = "7";
             this.casilla7.Size = new System.Drawing.Size(126, 46);
             this.casilla7.TabIndex = 8;
-            this.casilla7.Text = "label9";
+            this.casilla7.Text = "label8";
             this.casilla7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla7.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 
-            // label7
+            // casilla8
             // 
             this.casilla8.AutoSize = true;
             this.casilla8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.casilla8.Location = new System.Drawing.Point(169, 325);
-            this.casilla8.Name = "6";
+            this.casilla8.Location = new System.Drawing.Point(606, 325);
+            this.casilla8.Name = "8";
             this.casilla8.Size = new System.Drawing.Size(126, 46);
             this.casilla8.TabIndex = 6;
-            this.casilla8.Text = "label7";
+            this.casilla8.Text = "label9";
             this.casilla8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.casilla8.Click += new System.EventHandler(this.eventoMarcarCasilla);
             // 

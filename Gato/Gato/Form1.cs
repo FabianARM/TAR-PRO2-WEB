@@ -18,7 +18,6 @@ namespace Gato
         {
             gato = new ServicioGatoJose.TikTakToePortClient();
             tablero = "_________";
-            Console.Out.WriteLine(tablero);
             InitializeComponent();
         }
 
@@ -40,6 +39,7 @@ namespace Gato
         private void marcarCasilla(Coordenada coordenada)
         {
             tablero = gato.turno(tablero, coordenada.x, coordenada.y, "X");
+            Console.Out.WriteLine(tablero);
             marcarCasillaOponente();
         }
 
