@@ -305,11 +305,14 @@ class JuegoTikTakToe{
     {
       if($this->revisarHeuristicaFilas(1, $matrizDeDesicion) == false)
       {
-        return $this->revisarHeuristicaFilas(2, $matrizDeDesicion); 
+         if($this->revisarHeuristicaFilas(2, $matrizDeDesicion) == true)
+         {
+           return true; 
+         } 
       }
       else
       {
-        return true; 
+        return true;
       }
     }
     else
@@ -322,7 +325,10 @@ class JuegoTikTakToe{
     {
       if($this->revisarHeuristicaColumnas(1, $matrizDeDesicion) == false)
       {
-        return $this->revisarHeuristicaColumnas(2, $matrizDeDesicion); 
+         if($this->revisarHeuristicaColumnas(2, $matrizDeDesicion) == true)
+         {
+           return true; 
+         } 
       }
       else
       {
