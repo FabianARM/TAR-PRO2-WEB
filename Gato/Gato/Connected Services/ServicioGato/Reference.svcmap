@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f700dee6-c0c0-44a1-bcac-96d1cdfa049f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d6a1441f-9929-440e-bdd4-54ce25aad9c5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TikTakToe.wsdl" MetadataType="Wsdl" ID="4e8aad52-e866-4f58-87c9-24fdd013188d" SourceId="1" SourceUrl="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/?wsdl" />
+    <MetadataFile FileName="TikTakToe.wsdl" MetadataType="Wsdl" ID="1e07e8c6-6c55-43df-854f-343e8f528980" SourceId="1" SourceUrl="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

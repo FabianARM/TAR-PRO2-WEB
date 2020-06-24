@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gato.ServicioGatoJose {
+namespace Gato.ServicioGato {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:TikTakToe", ConfigurationName="ServicioGatoJose.TikTakToePort")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:TikTakToe", ConfigurationName="ServicioGato.TikTakToePort")]
     public interface TikTakToePort {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
@@ -23,13 +23,6 @@ namespace Gato.ServicioGatoJose {
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#cambiarNombre", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        void cambiarNombre(string nombre);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#cambiarNombre", ReplyAction="*")]
-        System.Threading.Tasks.Task cambiarNombreAsync(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -51,12 +44,12 @@ namespace Gato.ServicioGatoJose {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface TikTakToePortChannel : Gato.ServicioGatoJose.TikTakToePort, System.ServiceModel.IClientChannel {
+    public interface TikTakToePortChannel : Gato.ServicioGato.TikTakToePort, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TikTakToePortClient : System.ServiceModel.ClientBase<Gato.ServicioGatoJose.TikTakToePort>, Gato.ServicioGatoJose.TikTakToePort {
+    public partial class TikTakToePortClient : System.ServiceModel.ClientBase<Gato.ServicioGato.TikTakToePort>, Gato.ServicioGato.TikTakToePort {
         
         public TikTakToePortClient() {
         }
@@ -83,14 +76,6 @@ namespace Gato.ServicioGatoJose {
         
         public System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter) {
             return base.Channel.turnoAsync(coordenadaX, coordenadaY, caracter);
-        }
-        
-        public void cambiarNombre(string nombre) {
-            base.Channel.cambiarNombre(nombre);
-        }
-        
-        public System.Threading.Tasks.Task cambiarNombreAsync(string nombre) {
-            return base.Channel.cambiarNombreAsync(nombre);
         }
         
         public bool revisarGanador() {

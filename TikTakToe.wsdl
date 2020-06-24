@@ -46,13 +46,6 @@ bool determinarGanador()
 		<part name="return" type="xsd:string"/>
 	</message>
 
-	<message name="cambiarNombreIN">
-		<part name="nombre" type="xsd:string"/>
-	</message>
-
-	<message name="cambiarNombreOUT">
-	</message>
-
 	<message name="obtenerRecordsIN">
 	</message>
 
@@ -72,12 +65,6 @@ bool determinarGanador()
 			<input message="tns:realizarTurnoIN"/>
 			<output message="tns:realizarTurnoOUT"/>		
     	</operation>
-
-		<operation name="cambiarNombre">
-			<documentation>TikTakToe::cambiarNombre() Cambiar el nombre del jugador para el registro del record</documentation>
-			<input message="tns:cambiarNombreIN"/>
-			<output message="tns:cambiarNombreOUT"/>		
-		</operation>
 
 		<operation name="revisarGanador">
 			<documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
@@ -101,20 +88,6 @@ bool determinarGanador()
 		
 		<operation name="turno">
 			<soap:operation soapAction="urn:TikTakToe#TikTakToe#turno"/>
-			<input>
-				<soap:body use="encoded"
-				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-						   namespace="urn:TikTakToe"/>
-			</input>
-			<output>
-				<soap:body use="encoded"
-				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-						   namespace="urn:TikTakToe"/>
-			</output>
-		</operation>
-		
-		<operation name="cambiarNombre">
-			<soap:operation soapAction="urn:TikTakToe#TikTakToe#cambiarNombre"/>
 			<input>
 				<soap:body use="encoded"
 				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
@@ -161,7 +134,7 @@ bool determinarGanador()
 
 	<service name="TikTakToeService">
 		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
-			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/"/>
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/"/>
 		</port>
 	</service>
 </definitions>
