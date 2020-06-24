@@ -43,7 +43,7 @@ bool determinarGanador()
 	<message name="revisarGanadorIN"/>
 
 	<message name="revisarGanadorOUT">
-		<part name="return" type="xsd:boolean"/>
+		<part name="return" type="xsd:string"/>
 	</message>
 
 	<message name="cambiarNombreIN">

@@ -51,7 +51,7 @@ class JuegoTikTakToe{
           if($this->obtenerValorDePosicion($coordenadaX,$coordenadaY) != "" && $this->obtenerValorDePosicion($coordenadaX,$coordenadaY) == $this->obtenerValorDePosicion($coordenadaX + 1,$coordenadaY - 1)){
             $contador++; 
             if($contador == $this->puntosParaGanar){
-              return true; 
+              return $this->obtenerValorDePosicion($coordenadaX,$coordenadaY);
             }
           }
           $coordenadaY--; 
@@ -62,7 +62,7 @@ class JuegoTikTakToe{
       $coordenadaY = 2; 
       $contador = 0;
     }
-    return false; 
+    return "";  
   }
   
   function revisarHorizontal(){
@@ -72,12 +72,13 @@ class JuegoTikTakToe{
          if($this->obtenerValorDePosicion($indice ,$indice2) != "" && $this->obtenerValorDePosicion($indice,$indice2) == $this->obtenerValorDePosicion($indice,$indice2 + 1)){
              $contador++;
              if($contador ==  $this->puntosParaGanar){
-               return true;
+               return $this->obtenerValorDePosicion($indice,$indice2);
              }
          }
       }
       $contador = 1; 
     }
+    return ""; 
   }
   
   function revisarVertical(){
@@ -87,12 +88,13 @@ class JuegoTikTakToe{
          if($this->obtenerValorDePosicion($indice2, $indice) != "" && $this->obtenerValorDePosicion($indice2,$indice) == $this->obtenerValorDePosicion($indice2 + 1,$indice)){
              $contador++;
              if($contador ==  $this->puntosParaGanar){
-               return true;
+               return $this->obtenerValorDePosicion($indice2,$indice);
              }
          }
       }
       $contador = 1; 
     }
+    return ""; 
   }
   
   function movimientoValido(){
@@ -100,10 +102,29 @@ class JuegoTikTakToe{
   }
   
   function revisarGanador(){
-    if($this->revisarDiagonales() || $this->revisarVertical() || $this->revisarHorizontal()){
-      return true; 
+    $diagonales = $this->revisarDiagonales(); 
+    $vertical =  $this->revisarVertical();
+    $horizontal = $this->revisarHorizontal(); 
+    if($diagonales != "")
+    {
+      return $diagonales; 
     }
-    return false; 
+    else
+    {
+      if($vertical != "")
+      {
+        return $vertical; 
+      }
+      else
+      {
+        if($horizontal != "")
+        {
+          return $horizontal;
+        }
+      }
+    }
+    return "";
+     
   }
   
   function marcarXEnTablero($coordenadaX, $coordenadaY){
