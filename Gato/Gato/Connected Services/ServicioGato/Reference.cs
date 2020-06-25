@@ -27,11 +27,11 @@ namespace Gato.ServicioGato {
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        bool revisarGanador();
+        string revisarGanador();
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        System.Threading.Tasks.Task<bool> revisarGanadorAsync();
+        System.Threading.Tasks.Task<string> revisarGanadorAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#obtenerRecords", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -78,11 +78,11 @@ namespace Gato.ServicioGato {
             return base.Channel.turnoAsync(coordenadaX, coordenadaY, caracter);
         }
         
-        public bool revisarGanador() {
+        public string revisarGanador() {
             return base.Channel.revisarGanador();
         }
         
-        public System.Threading.Tasks.Task<bool> revisarGanadorAsync() {
+        public System.Threading.Tasks.Task<string> revisarGanadorAsync() {
             return base.Channel.revisarGanadorAsync();
         }
         

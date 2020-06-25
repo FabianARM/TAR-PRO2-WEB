@@ -13,7 +13,7 @@
   </wsdl:message>
   <wsdl:message name="revisarGanadorIN" />
   <wsdl:message name="revisarGanadorOUT">
-    <wsdl:part name="return" type="xsd:boolean" />
+    <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="obtenerRecordsIN" />
   <wsdl:message name="obtenerRecordsOUT">

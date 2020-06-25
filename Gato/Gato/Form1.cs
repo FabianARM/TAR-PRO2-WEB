@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,23 @@ namespace Gato
         private const string JUGADOR = " X ";
         private const string OPONENTE = " O ";
         private const string CASILLA_VACIA = "      ";
+        private bool ganador = false;
+        private Stopwatch contadorSegundos;
         public Form1()
         {
             gato = new TikTakToePortClient();
             tablero = ESTADO_INICIAL;
             InitializeComponent();
+            contadorSegundos = new Stopwatch();
+            contadorSegundos.Start();
         }
 
         private void eventoMarcarCasilla(object sender, EventArgs e)
         {
             Label casilla = (Label)sender;
 
-            // No marcar una que ya este marcada
-            if(casilla.Text != JUGADOR && casilla.Text != OPONENTE)
+            // No marcar una que ya este marcada o si ya hay ganador
+            if(casilla.Text != JUGADOR && casilla.Text != OPONENTE && ganador == false)
             {
                 casilla.Text = JUGADOR;
                 casilla.TextAlign = ContentAlignment.MiddleCenter;
@@ -45,6 +50,21 @@ namespace Gato
         {
             tablero = gato.turno(coordenada.x, coordenada.y, tablero);
             marcarCasillaOponente();
+
+            ganador = determinarGanador();
+            
+        }
+
+        private bool determinarGanador()
+        {
+            string resultado = gato.revisarGanador();
+
+            return false;
+        }
+
+        private int obtenerSegundosActuales()
+        {
+            return (int)contadorSegundos.Elapsed.TotalSeconds;
         }
 
         // Se marca de acuerdo a lo que tenga tablero
@@ -108,6 +128,8 @@ namespace Gato
 
         private void eventoReiniciar(object sender, EventArgs e)
         {
+            contadorSegundos.Restart();
+
             tablero = ESTADO_INICIAL;
             casilla0.Text = CASILLA_VACIA;
             casilla1.Text = CASILLA_VACIA;
