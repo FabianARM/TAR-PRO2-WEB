@@ -43,8 +43,12 @@ if (isset($_GET['wsdl'])) {
 	echo file_get_contents('TikTakToe.wsdl');
 }
 else {
+	// Evitar problemas de cache
+	ini_set('soap.wsdl_cache_enabled', '0');
+	ini_set('soap.wsdl_cache_ttl', '0');
+	
 	session_start();
-	$servidorSoap = new SoapServer('http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/?wsdl');
+	$servidorSoap = new SoapServer('http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/?wsdl');
 
 	//Para evitar la excepción por defecto de SOAP PHP cuando no existe HTTP_RAW_POST_DATA,
 	//se regresa explícitamente el siguiente fallo cuando no hay solicitud (v.b. desde un navegador)
