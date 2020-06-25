@@ -41,7 +41,7 @@ class JuegoTikTakToe{
           if($this->obtenerValorDePosicion($coordenadaX,$coordenadaY) != "" && $this->obtenerValorDePosicion($coordenadaX,$coordenadaY) == $this->obtenerValorDePosicion($coordenadaX + 1,$coordenadaY + 1)) {
             $contador++; 
             if($contador == $this->puntosParaGanar){
-              return true; 
+              return $this->obtenerValorDePosicion($coordenadaX,$coordenadaY);
             }
           }
           $coordenadaY++;
