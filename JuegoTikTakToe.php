@@ -7,9 +7,6 @@ class JuegoTikTakToe{
   public $puntosParaGanar = 3;
   public $tablero = array(); 
   public $tamanoTablero = 3; 
-  // ToDo: contar segundos hasta la victoria
-  public $tiempoActualSegundos = 10;  // Se tiene que llevar un conteo, de momento, quemado para pruebas
-	public $idUsuario = "JUGADOR";
   
   function __construct()
   {
@@ -78,7 +75,7 @@ class JuegoTikTakToe{
       }
       $contador = 1; 
     }
-    return ""; 
+    return "";
   }
   
   function revisarVertical(){
@@ -101,7 +98,8 @@ class JuegoTikTakToe{
     
   }
   
-  function revisarGanador(){
+  function revisarGanador()
+  {
     $diagonales = $this->revisarDiagonales(); 
     $vertical =  $this->revisarVertical();
     $horizontal = $this->revisarHorizontal(); 
@@ -123,6 +121,7 @@ class JuegoTikTakToe{
         }
       }
     }
+      
     return "";
      
   }
@@ -140,16 +139,11 @@ class JuegoTikTakToe{
     $this->tablero = $this->recuperarTablero($caracter); 
     $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);// Jugada del jugador 
     $this->jugadaMaquina(); // Jugada de la mquina. 
-    if($this->revisarGanador())
-    {
-      // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
-			// OJO: Se tiene que llamar cuando el jugador gane, no el caso de la maquina
-      $this->verificarRecord();
-    }
+    
     return $this->tableroToString();
   }
 
-  function verificarRecord()
+  function verificarRecord($idUsuario, $tiempoActualSegundos)
   {
     $listaRecords = $this->db->leerRecords();
 		$insertado = false;
@@ -160,10 +154,10 @@ class JuegoTikTakToe{
 			$record = $listaRecords[$posicion];
 
 				// Si mi tiempo es menor a alguno
-			if($record->tiempo > $this->tiempoActualSegundos)
+			if($record->tiempo > $tiempoActualSegundos)
 			{
 				// Hacer append en el index actual
-				array_splice( $listaRecords, $posicion, 0, array(new RecordModelo($this->idUsuario, $this->tiempoActualSegundos)) );
+				array_splice( $listaRecords, $posicion, 0, array(new RecordModelo($idUsuario, $tiempoActualSegundos)) );
 
 				// Si el tamanno de la lista es 10, eliminar el elemento onceavo
 				if(sizeof($listaRecords) > 10)
@@ -180,7 +174,7 @@ class JuegoTikTakToe{
 		// Si hay mas de 10 elementos, ni siquiera entro al record.
 		if(sizeof($listaRecords) < 10 && $insertado == false)
 		{
-			array_push($listaRecords, new RecordModelo($this->idUsuario, $this->tiempoActualSegundos));
+			array_push($listaRecords, new RecordModelo($idUsuario, $tiempoActualSegundos));
 		}
     
     // Limpio el archivo y guardo la lista
@@ -423,11 +417,6 @@ class JuegoTikTakToe{
       }
       print(""."\n");
     }
-  }
-
-  function cambiarNombre(String $nombre)
-  {
-    $this->idUsuario = $nombre;
   }
 }
 ?>
