@@ -3,7 +3,7 @@
 require("BaseDatos.php");
 
 class JuegoTikTakToe{
-  
+  public $dificultad = 25; //Entra más alto más dificil es. 
   public $puntosParaGanar = 3;
   public $tablero = array(); 
   public $tamanoTablero = 3; 
@@ -100,13 +100,8 @@ class JuegoTikTakToe{
     
   }
   
-<<<<<<< HEAD
   function revisarGanador($tablero){
     $this->tablero = $this->recuperarTablero($tablero);
-=======
-  function revisarGanador()
-  {
->>>>>>> 03feffb4bb29edf487dfbca6b6b70bbf4843ddf5
     $diagonales = $this->revisarDiagonales(); 
     $vertical =  $this->revisarVertical();
     $horizontal = $this->revisarHorizontal(); 
@@ -143,21 +138,10 @@ class JuegoTikTakToe{
   
   function turno($coordenadaX, $coordenadaY, $tablero)
   {
- 
-    $this->tablero = $this->recuperarTablero($caracter); 
+    $this->tablero = $this->recuperarTablero($tablero); 
     $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);// Jugada del jugador 
-<<<<<<< HEAD
     $this->jugadaMaquina(); // Jugada de la mquina.
-    if($this->revisarGanador())
-    {
-      // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
-			// OJO: Se tiene que llamar cuando el jugador gane, no el caso de la maquina
-      $this->verificarRecord();
-    }
-=======
-    $this->jugadaMaquina(); // Jugada de la mquina. 
-    
->>>>>>> 03feffb4bb29edf487dfbca6b6b70bbf4843ddf5
+    $this->immprimirTablero();
     return $this->tableroToString();
   }
 
@@ -367,47 +351,47 @@ class JuegoTikTakToe{
     return $this->revisarHeuristicaDiagonales($matrizDeDesicion);
   }
   
-  
-  function jugadaMaquina()
+  function marcarSinHeuristicas()
   {
-    $matrizDeX = $this->armarMatrizDeDecision("X");
-     
-    $matrizDeO = $this->armarMatrizDeDecision("O");
-    //Revisamos heuristica para opcion de ganar.  
-    if($this->revisionHeurisiticas($matrizDeO) == false)
-    {
-      if($this->revisionHeurisiticas($matrizDeX) == false)
-      { 
-        if($this->obtenerValorDePosicion(1, 1) == "")
-        {
-          $this->marcarOEnElTablero(1, 1);
-          return true;
-        }
-        else
-        {  
-          for($indice = 0; $indice < $this->tamanoTablero; $indice++)
-          {
-            for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++)
-            {
-              if($this->obtenerValorDePosicion($indice, $indice2) == "")
-              {
-                $this->marcarOEnElTablero($indice, $indice2);
-                return true; 
-              }
-            }
-          }
-        }   
+      if($this->obtenerValorDePosicion(1, 1) == "")
+      {
+        $this->marcarOEnElTablero(1, 1);
+        return true;
       }
       else
+      {  
+        for($indice = 0; $indice < $this->tamanoTablero; $indice++)
+        {
+          for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++)
+          {
+            if($this->obtenerValorDePosicion($indice, $indice2) == "")
+            {
+              $this->marcarOEnElTablero($indice, $indice2);
+              return true; 
+            }
+          }
+        }
+      }  
+  }
+  function jugadaMaquina()
+  {
+    if($this->fallarTurno())
+    {
+      $matrizDeX = $this->armarMatrizDeDecision("X");
+      $matrizDeO = $this->armarMatrizDeDecision("O");
+      //Revisamos heuristica para opcion de ganar.  
+      if($this->revisionHeurisiticas($matrizDeO) == false)
       {
-        return true; 
+        if($this->revisionHeurisiticas($matrizDeX) == false)
+        { 
+          $this->marcarSinHeuristicas(); 
+        }
       }
     }
     else
     {
-      return true; 
+      $this->marcarSinHeuristicas();  
     }
-    return false;
   }
 
   function limpiarTablero(){
@@ -444,6 +428,17 @@ class JuegoTikTakToe{
     return $split;
   }
   
+  function fallarTurno()
+  {
+    $aumento = 100;
+    $numeroAleatorio = rand() % 10000; 
+    if($this->dificultad * $aumento < $numeroAleatorio)
+    {
+      return true; 
+    }
+    return false; 
+  }
+  
   function immprimirTablero(){
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
@@ -458,4 +453,5 @@ class JuegoTikTakToe{
     }
   }
 }
+
 ?>
