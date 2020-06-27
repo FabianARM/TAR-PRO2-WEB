@@ -19,6 +19,11 @@
   <wsdl:message name="obtenerRecordsOUT">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="verificarRecordIN">
+    <wsdl:part name="idUsuario" type="xsd:string" />
+    <wsdl:part name="tiempoActualSegundos" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="verificarRecordOUT" />
   <wsdl:portType name="TikTakToePort">
     <wsdl:operation name="turno">
       <documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
@@ -34,6 +39,11 @@
       <documentation>TikTakToe::obtenerRecords() Obtener records actuales</documentation>
       <wsdl:input message="tns:obtenerRecordsIN" />
       <wsdl:output message="tns:obtenerRecordsOUT" />
+    </wsdl:operation>
+    <wsdl:operation name="verificarRecord">
+      <documentation>TikTakToe::obtenerRecords() Verficar los records</documentation>
+      <wsdl:input message="tns:verificarRecordIN" />
+      <wsdl:output message="tns:verificarRecordOUT" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TikTakToeBinding" type="tns:TikTakToePort">
@@ -58,6 +68,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerRecords">
       <soap:operation soapAction="urn:TikTakToe#TikTakToe#obtenerRecords" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificarRecord">
+      <soap:operation soapAction="urn:TikTakToe#TikTakToe#verificarRecord" />
       <wsdl:input>
         <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

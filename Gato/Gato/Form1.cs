@@ -22,11 +22,13 @@ namespace Gato
         private const string CASILLA_VACIA = "      ";
         private bool ganador = false;
         private Stopwatch contadorSegundos;
+        private string nombreJugador;
         public Form1()
         {
+            InitializeComponent();
+            nombreJugador = "Anónimo";
             gato = new TikTakToePortClient();
             tablero = ESTADO_INICIAL;
-            InitializeComponent();
             contadorSegundos = new Stopwatch();
             contadorSegundos.Start();
         }
@@ -51,15 +53,24 @@ namespace Gato
             tablero = gato.turno(coordenada.x, coordenada.y, tablero);
             marcarCasillaOponente();
 
-            ganador = determinarGanador();
-            
+            determinarGanador();            
         }
 
-        private bool determinarGanador()
+        private void determinarGanador()
         {
             string resultado = gato.revisarGanador();
 
-            return false;
+            if(resultado == "X")
+            {
+                ganador = true;
+                gato.verificarRecord(nombreJugador, obtenerSegundosActuales());
+
+            }
+            else if(resultado == "O")
+            {
+                ganador = true;
+            }
+
         }
 
         private int obtenerSegundosActuales()
@@ -157,6 +168,12 @@ namespace Gato
                 }
             }
             MessageBox.Show(mensaje, "Records");
+        }
+
+        private void eventoGuardarNombre(object sender, EventArgs e)
+        {
+            nombreJugador = textBoxNombre.Text;
+            MessageBox.Show("Se guardó el nombre " + nombreJugador, "Nombre guardado");
         }
     }
 }

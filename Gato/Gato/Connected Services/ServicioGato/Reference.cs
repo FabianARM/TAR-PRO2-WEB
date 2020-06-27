@@ -41,6 +41,13 @@ namespace Gato.ServicioGato {
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#obtenerRecords", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> obtenerRecordsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#verificarRecord", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        void verificarRecord(string idUsuario, int tiempoActualSegundos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#verificarRecord", ReplyAction="*")]
+        System.Threading.Tasks.Task verificarRecordAsync(string idUsuario, int tiempoActualSegundos);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -92,6 +99,14 @@ namespace Gato.ServicioGato {
         
         public System.Threading.Tasks.Task<string> obtenerRecordsAsync() {
             return base.Channel.obtenerRecordsAsync();
+        }
+        
+        public void verificarRecord(string idUsuario, int tiempoActualSegundos) {
+            base.Channel.verificarRecord(idUsuario, tiempoActualSegundos);
+        }
+        
+        public System.Threading.Tasks.Task verificarRecordAsync(string idUsuario, int tiempoActualSegundos) {
+            return base.Channel.verificarRecordAsync(idUsuario, tiempoActualSegundos);
         }
     }
 }
