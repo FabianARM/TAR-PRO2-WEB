@@ -23,10 +23,12 @@ class JuegoTikTakToe{
   }
   
   function marcarEnTablero($caracter, $coordenadaX, $coordenadaY){
+    //print("Hola estoy marcando en :".$coordenadaX.$coordenadaY.$caracter);
     $this->tablero[$coordenadaX * $this->tamanoTablero + $coordenadaY] = $caracter;
   }
   
   function obtenerValorDePosicion($coordenadaX, $coordenadaY){
+    //print("||||".$coordenadaX.$coordenadaY);
     return $this->tablero[$coordenadaX * $this->tamanoTablero + $coordenadaY];
   }
   
@@ -101,7 +103,8 @@ class JuegoTikTakToe{
     
   }
   
-  function revisarGanador(){
+  function revisarGanador($tablero){
+    $this->tablero = $this->recuperarTablero($tablero);
     $diagonales = $this->revisarDiagonales(); 
     $vertical =  $this->revisarVertical();
     $horizontal = $this->revisarHorizontal(); 
@@ -135,11 +138,12 @@ class JuegoTikTakToe{
     $this->marcarEnTablero("O", $coordenadaX, $coordenadaY);
   }
   
-  function turno($coordenadaX, $coordenadaY, $caracter)
+  function turno($coordenadaX, $coordenadaY, $tablero)
   {
+ 
     $this->tablero = $this->recuperarTablero($caracter); 
     $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);// Jugada del jugador 
-    $this->jugadaMaquina(); // Jugada de la mquina. 
+    $this->jugadaMaquina(); // Jugada de la mquina.
     if($this->revisarGanador())
     {
       // Ganador, verificar si hay que guardarlo en los puntajes mas altos.
@@ -203,92 +207,103 @@ class JuegoTikTakToe{
   }
     
   function armarMatrizDeDecision($caracter){
+    $tamanoMatrixDecision = $this->tamanoTablero + 1;
     //Iniciamos la matrix de decision. 
+      
     $matrixDeDecision = array(); 
     for($indice = 0; $indice < ($this->tamanoTablero + 1) * ($this->tamanoTablero + 1); $indice++){
       $matrixDeDecision[$indice] = "";
     }
-    //Se rellena la suma de las columnas
+
+    //Se rellena la suma de las filas
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       $contadorDeCaracteres = 0; 
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
         if($this->obtenerValorDePosicion($indice, $indice2) == $caracter){
            $contadorDeCaracteres++; 
         }
-        $matrixDeDecision[$indice * $this->tamanoTablero + 3] = $contadorDeCaracteres; 
       }
+      $matrixDeDecision[$indice * $tamanoMatrixDecision + 3] = $contadorDeCaracteres; 
     }
-     //Se rellena la suma de las filas.
+        
+     //Se rellena la suma de las columnas.
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       $contadorDeCaracteres = 0; 
       for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++){
         if($this->obtenerValorDePosicion($indice2, $indice) == $caracter){
            $contadorDeCaracteres++; 
         }
-        $matrixDeDecision[3 * $this->tamanoTablero + $indice] = $contadorDeCaracteres; 
       }
+      $matrixDeDecision[3 * $tamanoMatrixDecision + $indice] = $contadorDeCaracteres; 
     }
-    $matrixDeDecision[3 * $this->tamanoTablero + 3] = $caracter; 
+
+    //
+    $matrixDeDecision[3 * $tamanoMatrixDecision + 3] = $caracter; // El caracter con el que se hizo el contero.
     return $matrixDeDecision; 
   }
   
   function revisarHeuristicaFilas($coordenadaY, $matrizDeDesicion)
   {
+    $tamanoMatrixDecision = $this->tamanoTablero + 1;
     $coordenadaX = 0; 
-    while($coordenadaX < 3)
+    if($matrizDeDesicion[3 * $tamanoMatrixDecision + $coordenadaY] == 2)
     {
-      if($matrizDeDesicion[3 * $this->tamanoTablero + $coordenadaY] == 2)
+      while($coordenadaX < 3)
       {
         if($this->obtenerValorDePosicion($coordenadaX, $coordenadaY) == "")
         { 
+
           $this->marcarOEnElTablero($coordenadaX, $coordenadaY);
           return true;
         }
+        $coordenadaX++;
       }
-      $coordenadaX++;
+
     }
     return false; 
-    
   }
 
   function revisarHeuristicaColumnas($coordenadaX, $matrizDeDesicion)
   {
-    $coordenadaY = 0; 
-    while($coordenadaY < 3)
+    $tamanoMatrixDecision = $this->tamanoTablero + 1;
+    $coordenadaY = 0;
+    if($matrizDeDesicion[$coordenadaX * $tamanoMatrixDecision + 3] == 2) //Obtenemos la cantidad de caracteres que hay de un tipo en una fila. 
     {
-      if($matrizDeDesicion[$coordenadaX * $this->tamanoTablero + 3] == 2)
+      while($coordenadaY < 3)
       {
-        if($this->obtenerValorDePosicion($coordenadaX, $coordenadaY) == "")
-        { 
-          $this->marcarOEnElTablero($coordenadaX, $coordenadaY);
-          return true;
-        }
+          if($this->obtenerValorDePosicion($coordenadaX, $coordenadaY) == "")
+          { 
+
+            $this->marcarOEnElTablero($coordenadaX, $coordenadaY);
+            return true;
+          }
+          $coordenadaY++;
       }
-      $coordenadaY++;
     }
     return false; 
   }
   function revisarHeuristicaDiagonales($matrizDeDesicion)
   {
+    $tamanoMatrixDecision = $this->tamanoTablero + 1;
     //Si en el centro del tablero hay una X debe examinar las esquinas
     if($this->obtenerValorDePosicion(1,1) == "X")
     {
-      if($this->obtenerValorDePosicion(0,0) == "X")
+      if($this->obtenerValorDePosicion(0,0) == "X" && $this->obtenerValorDePosicion(2,2) == "")
       {
         $this->marcarOEnElTablero(2,2);
         return true;
       }
-      if($this->obtenerValorDePosicion(2,2) == "X")
+      if($this->obtenerValorDePosicion(2,2) == "X" && $this->obtenerValorDePosicion(0,0) == "")
       {
         $this->marcarOEnElTablero(0,0);
         return true;
       }
-      if($this->obtenerValorDePosicion(0,2) == "X")
+      if($this->obtenerValorDePosicion(0,2) == "X" && $this->obtenerValorDePosicion(2,0) == "" )
       {
         $this->marcarOEnElTablero(2,0);
         return true;
       }
-      if($this->obtenerValorDePosicion(2,0) == "X")
+      if($this->obtenerValorDePosicion(2,0) == "X" && $this->obtenerValorDePosicion(0,2) == "")
       {
         $this->marcarOEnElTablero(0,2);
         return true;
@@ -348,6 +363,7 @@ class JuegoTikTakToe{
   function jugadaMaquina()
   {
     $matrizDeX = $this->armarMatrizDeDecision("X");
+     
     $matrizDeO = $this->armarMatrizDeDecision("O");
     //Revisamos heuristica para opcion de ganar.  
     if($this->revisionHeurisiticas($matrizDeO) == false)
@@ -365,15 +381,23 @@ class JuegoTikTakToe{
           {
             for($indice2 = 0; $indice2 < $this->tamanoTablero; $indice2++)
             {
-              if($this->obtenerValorDePosicion($indice, $indice2) == "" && $indice != 1 && $indice2 != 1)
+              if($this->obtenerValorDePosicion($indice, $indice2) == "")
               {
-                $this->marcarOEnElTablero($indice, $indice2); 
+                $this->marcarOEnElTablero($indice, $indice2);
                 return true; 
               }
             }
           }
         }   
       }
+      else
+      {
+        return true; 
+      }
+    }
+    else
+    {
+      return true; 
     }
     return false;
   }
@@ -383,6 +407,7 @@ class JuegoTikTakToe{
       $this->tablero[$indice] = "";
     }
   }
+  
   function tableroToString(){
     $tableroToString = "";
     for($indice = 0; $indice < $this->tamanoTablero; $indice++){
@@ -430,4 +455,7 @@ class JuegoTikTakToe{
     $this->idUsuario = $nombre;
   }
 }
+/*$juego = new JuegoTikTakToe();
+$board = "XXX______";
+print($juego->revisarGanador($board));*/
 ?>

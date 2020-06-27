@@ -40,7 +40,9 @@ bool determinarGanador()
 		<part name="return" type="xsd:string"/>
 	</message>
 
-	<message name="revisarGanadorIN"/>
+	<message name="revisarGanadorIN">
+    <part name="tablero" type="xsd:string"/>
+  </message>
 
 	<message name="revisarGanadorOUT">
 		<part name="return" type="xsd:string"/>
@@ -134,7 +136,7 @@ bool determinarGanador()
 
 	<service name="TikTakToeService">
 		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
-			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb54275/ejercicios/gato/"/>
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb66236/tareaProgramada2/TAR-PRO2-WEB/"/>
 		</port>
 	</service>
 </definitions>
