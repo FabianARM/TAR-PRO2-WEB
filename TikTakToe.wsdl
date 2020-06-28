@@ -18,17 +18,11 @@ bool determinarGanador()
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
              xmlns="http://schemas.xmlsoap.org/wsdl/">
+			 
   
-  
-  <!-- Tipos complejos -->
-  <!--No se necesitan tipos commplejos de momento.-->
-  
-  
-  <!-- Mensajes para comunicarse con la clase HolaMundo. -->
-  
-  <types>
+	<types>
 		<xsd:schema targetNamespace="urn:TikTakToe"/>
-</types>
+	</types>
   
 	<message name="realizarTurnoIN">
 		<part name="coordenadaX" type="xsd:int"/>
@@ -41,8 +35,8 @@ bool determinarGanador()
 	</message>
 
 	<message name="revisarGanadorIN">
-    <part name="tablero" type="xsd:string"/>
-  </message>
+		<part name="tablero" type="xsd:string"/>
+	</message>
 
 	<message name="revisarGanadorOUT">
 		<part name="return" type="xsd:string"/>
@@ -53,6 +47,14 @@ bool determinarGanador()
 
 	<message name="obtenerRecordsOUT">
 		<part name="return" type="xsd:string"/>
+	</message>
+	
+	<message name="verificarRecordIN">
+		<part name="idUsuario" type="xsd:string"/>
+		<part name="tiempoActualSegundos" type="xsd:int"/>
+	</message>
+
+	<message name="verificarRecordOUT">
 	</message>
   
   
@@ -78,6 +80,12 @@ bool determinarGanador()
 			<documentation>TikTakToe::obtenerRecords() Obtener records actuales</documentation>
 			<input message="tns:obtenerRecordsIN"/>
 			<output message="tns:obtenerRecordsOUT"/>		
+		</operation>
+		
+		<operation name="verificarRecord">
+			<documentation>TikTakToe::obtenerRecords() Verficar los records</documentation>
+			<input message="tns:verificarRecordIN"/>
+			<output message="tns:verificarRecordOUT"/>		
 		</operation>
 
 	</portType>
@@ -118,6 +126,20 @@ bool determinarGanador()
 		
 		<operation name="obtenerRecords">
 			<soap:operation soapAction="urn:TikTakToe#TikTakToe#obtenerRecords"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="verificarRecord">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#verificarRecord"/>
 			<input>
 				<soap:body use="encoded"
 				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
