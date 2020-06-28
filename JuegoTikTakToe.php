@@ -59,14 +59,14 @@ class JuegoTikTakToe{
       }
       $coordenadaX = 0;
       $coordenadaY = 2; 
-      $contador = 0;
+      $contador = 1;
     }
     return "";  
   }
   
   function revisarHorizontal(){
     $contador = 1; 
-    for($indice = 0; $indice < $this->tamanoTablero - 1; $indice++){
+    for($indice = 0; $indice < $this->tamanoTablero; $indice++){
       for($indice2 = 0; $indice2 < $this->tamanoTablero - 1; $indice2++){
          if($this->obtenerValorDePosicion($indice ,$indice2) != "" && $this->obtenerValorDePosicion($indice,$indice2) == $this->obtenerValorDePosicion($indice,$indice2 + 1)){
              $contador++;
@@ -82,7 +82,7 @@ class JuegoTikTakToe{
   
   function revisarVertical(){
     $contador = 1; 
-    for($indice = 0; $indice < $this->tamanoTablero - 1; $indice++){
+    for($indice = 0; $indice < $this->tamanoTablero ; $indice++){
       for($indice2 = 0; $indice2 < $this->tamanoTablero - 1; $indice2++){
          if($this->obtenerValorDePosicion($indice2, $indice) != "" && $this->obtenerValorDePosicion($indice2,$indice) == $this->obtenerValorDePosicion($indice2 + 1,$indice)){
              $contador++;
@@ -122,10 +122,8 @@ class JuegoTikTakToe{
           return $horizontal;
         }
       }
-    }
-      
+    } 
     return "";
-     
   }
   
   function marcarXEnTablero($coordenadaX, $coordenadaY){
@@ -140,8 +138,11 @@ class JuegoTikTakToe{
   {
     $this->tablero = $this->recuperarTablero($tablero); 
     $this->marcarEnTablero("X", $coordenadaX, $coordenadaY);// Jugada del jugador 
-    $this->jugadaMaquina(); // Jugada de la mquina.
-    $this->immprimirTablero();
+    if($this->revisarGanador($this->tableroToString()) == "")
+    {
+      $this->jugadaMaquina(); // Jugada de la mquina.
+    }
+    //$this->immprimirTablero();
     return $this->tableroToString();
   }
 
