@@ -18,20 +18,20 @@ namespace Gato.ServicioGato {
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        string turno(int coordenadaX, int coordenadaY, string caracter);
+        string turno(int coordenadaX, int coordenadaY, string tablero);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#turno", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter);
+        System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string tablero);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        string revisarGanador();
+        string revisarGanador(string tablero);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#revisarGanador", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        System.Threading.Tasks.Task<string> revisarGanadorAsync();
+        System.Threading.Tasks.Task<string> revisarGanadorAsync(string tablero);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:TikTakToe#TikTakToe#obtenerRecords", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -77,20 +77,20 @@ namespace Gato.ServicioGato {
                 base(binding, remoteAddress) {
         }
         
-        public string turno(int coordenadaX, int coordenadaY, string caracter) {
-            return base.Channel.turno(coordenadaX, coordenadaY, caracter);
+        public string turno(int coordenadaX, int coordenadaY, string tablero) {
+            return base.Channel.turno(coordenadaX, coordenadaY, tablero);
         }
         
-        public System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string caracter) {
-            return base.Channel.turnoAsync(coordenadaX, coordenadaY, caracter);
+        public System.Threading.Tasks.Task<string> turnoAsync(int coordenadaX, int coordenadaY, string tablero) {
+            return base.Channel.turnoAsync(coordenadaX, coordenadaY, tablero);
         }
         
-        public string revisarGanador() {
-            return base.Channel.revisarGanador();
+        public string revisarGanador(string tablero) {
+            return base.Channel.revisarGanador(tablero);
         }
         
-        public System.Threading.Tasks.Task<string> revisarGanadorAsync() {
-            return base.Channel.revisarGanadorAsync();
+        public System.Threading.Tasks.Task<string> revisarGanadorAsync(string tablero) {
+            return base.Channel.revisarGanadorAsync(tablero);
         }
         
         public string obtenerRecords() {

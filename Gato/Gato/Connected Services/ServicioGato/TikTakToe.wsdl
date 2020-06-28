@@ -6,12 +6,14 @@
   <wsdl:message name="realizarTurnoIN">
     <wsdl:part name="coordenadaX" type="xsd:int" />
     <wsdl:part name="coordenadaY" type="xsd:int" />
-    <wsdl:part name="caracter" type="xsd:string" />
+    <wsdl:part name="tablero" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="realizarTurnoOUT">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="revisarGanadorIN" />
+  <wsdl:message name="revisarGanadorIN">
+    <wsdl:part name="tablero" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="revisarGanadorOUT">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>

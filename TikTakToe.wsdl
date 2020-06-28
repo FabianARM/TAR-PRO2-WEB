@@ -1,14 +1,4 @@
 <?xml version="1.0"?>
-<!--
-Esta era una primera version de l wsdl. 
-string realizarTurno(idJugador, x, y)(edited)
-bool determinarGanador()
-
-string realizarTurno(idJugador, x, y)
-bool determinarGanador()
--->
-
-<!-- Descripción WSDL de la clase Hola Mundo. -->
 
 <definitions name="TikTakToe"
              targetNamespace="urn:TikTakToe"

@@ -58,17 +58,18 @@ namespace Gato
 
         private void determinarGanador()
         {
-            string resultado = gato.revisarGanador();
+            string resultado = gato.revisarGanador(tablero);
 
             if(resultado == "X")
             {
                 ganador = true;
                 gato.verificarRecord(nombreJugador, obtenerSegundosActuales());
-
+                MessageBox.Show("¡Has ganado!");
             }
             else if(resultado == "O")
             {
                 ganador = true;
+                MessageBox.Show("Perdiste :(");
             }
 
         }
@@ -140,7 +141,7 @@ namespace Gato
         private void eventoReiniciar(object sender, EventArgs e)
         {
             contadorSegundos.Restart();
-
+            ganador = false;
             tablero = ESTADO_INICIAL;
             casilla0.Text = CASILLA_VACIA;
             casilla1.Text = CASILLA_VACIA;
